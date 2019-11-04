@@ -1,10 +1,7 @@
+// emphasize the section selected(e.g Contact)
 function handler(e){
     const anchors = document.querySelectorAll("a[class = nav-link]")
-    anchors.forEach(a => {
-        console.log(a.href, e.target.href)
-        a.dataset.on = (a.href === e.target.href)
-        console.log(a.dataset.on)
-    })
+    anchors.forEach(a => a.dataset.on = (a.href === e.target.href))
 }
 
 function itemToNav(item, index){

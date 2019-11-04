@@ -1,5 +1,5 @@
 import { e, Spinner} from '../utils.js'
-import { api, alertMsg } from './config.js'
+import { api, repos, alertMsg } from './config.js'
 import { processResponse } from './methods.js'
 
 class Work extends React.Component{
@@ -13,7 +13,7 @@ class Work extends React.Component{
     // hide alert on click
     ReactDOM.findDOMNode(this).addEventListener('click', () => this.setState({alert: false}))
 
-    fetch(api)
+    fetch(api + repos, {headers: {'Accept' : 'application/vnd.github.mercy-preview+json'}})
     .then(httpResponse => httpResponse.json())
       .then(data => this.setState({
         loading: false, 

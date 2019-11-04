@@ -9,13 +9,12 @@ function Spinner(type){
 // create a Card Component with title, description, an unordered list of properties and a list of links
 function Card(props){
     const { key, title, description, urls, ...rest } = props 
-    const maxDescription = 100
-    const croppedDescription = (description.length > maxDescription ? description.slice(0, maxDescription) + "..." : description)
+    const maxDescription = 100, croppedDescription = description.slice(0, maxDescription) + "..."
     return (e("div", {key: key, className: "card"}, 
                 e("h5", {className: "card-title"}, title), 
                 e("div", {className: "card-body"},
                     e("div", {className: "card-text"}, 
-                        croppedDescription,
+                        (description.length > maxDescription ? croppedDescription : description),
                         e("ul", null, Object.keys(rest)
                         .map((k, i) => e("li", {key: i}, e("span", null, k), ": " + rest[k]))),
                         urls.map((u, i) => e("a", {href: u.href, key: i, className: "card-link"}, u.name))
