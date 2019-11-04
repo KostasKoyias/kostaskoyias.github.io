@@ -11,19 +11,22 @@ const url = {
 const messages = ["Make sure to check out my GitHub account where all  my projects reside.",
                   "If basketball is your passion, do not forget to visit my youtube channel as well.",
                   "For any work-related offers or issues, one can contact me via e-mail, phone or facebook"]
-
+                  
+// represent a column as an object defining it's position & content
 const cols = [
     {
         pos: "col-md-6",
         children: [
-            React.createElement("h3", null, "More info"), 
+            React.createElement("h3", {className : "h-beautify"}, "More info"), 
             React.createElement("p", null, "Use those links to check out all my web-accounts!"),
             React.createElement("ul", null, messages.map((m , i) => React.createElement("li", {key: i}, m)))
         ].map(addKey)
     },
     {
         pos: "col-md-2 offset-md-2",
-        children: [React.createElement("h3", null, "Work"),
+        children: [
+            // header
+            React.createElement("h3", {className : "h-beautify"}, "Work"),
 
             // links
             React.createElement("ul", null,  
@@ -38,7 +41,9 @@ const cols = [
     },
     {
         pos: "col-md-2",
-        children: [React.createElement("h3", null, "Personal"),
+        children: [
+            // header
+            React.createElement("h3", {className : "h-beautify"}, "Personal"),
 
             // links
             React.createElement("ul", null,  

@@ -9,7 +9,7 @@ function App(){
     React.createElement("div", null, 
       React.createElement(Nav),
       React.createElement(Intro, {id: "about"}),
-      //React.createElement(Work, {id: "work"}),
+      React.createElement(Work, {id: "work"}),
       React.createElement(Footer, {id: "contact"})
     ))
 }
