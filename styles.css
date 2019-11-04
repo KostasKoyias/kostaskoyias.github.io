@@ -141,6 +141,10 @@ hr{
     border: 1px solid #343a40;
 }
 
+#work .fa-star{
+    float: right;
+}
+
 /* Footer */
 footer {
     position: relative;

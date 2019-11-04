@@ -5,7 +5,7 @@ import { gridRows, cardsPerRow } from './config.js'
 // create a card element out of the most important properties
 function repoToCard(repo, index){
     const props = {
-        title: repo.name,
+        title: repo.watchers > 0 ? e("span", null, repo.name, e("i", {className: "far fa-star"})): repo.name,
         description: repo.description,
         urls: [{name: "Check it out", href: repo.html_url}],
         language: repo.language,
@@ -24,11 +24,15 @@ function cardGrid(list){
     return rv
 }
 
+// create a card grid out of repository meta-data, customizing the order
 function processResponse(response){
+    // exclude sub-modules & forked repos
+    const isImportant = (p) => (!p.name.endsWith("ui") && !p.name.endsWith("api") && !p.fork)
 
-    // create a card grid out of repository meta-data putting the most recently modified projects first
-    const sortedResponse = response.sort((r0, r1) => new Date(r1.pushed_at) - new Date(r0.pushed_at))
-    const grid = cardGrid(sortedResponse.map(repoToCard))
+    // most recently modified projects go first, putting the starred ones on top
+    response.sort((r0, r1) => new Date(r1.pushed_at) - new Date(r0.pushed_at))
+            .sort((r0, r1) => r1.watchers - r0.watchers)
+    const grid = cardGrid(response.filter(r => isImportant(r)).map(repoToCard))
     return e("div", {id: "work-body"}, grid)
 }
 

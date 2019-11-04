@@ -19,7 +19,7 @@ class Work extends React.Component{
         loading: false, 
         projects: processResponse(data)
       }))
-    .catch(error => {this.setState({ alert: true }) ; console.error(error)})
+    .catch(error => {this.setState({ alert: true, loading: false }) ; console.error(error)})
   }
 
   render(){
