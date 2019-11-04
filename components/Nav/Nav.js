@@ -1,8 +1,11 @@
-import { itemToNav } from './methods.js'
 import { items } from './config.js'
 
 function Nav(){
-    const navItems = items.map(itemToNav)
+
+    // create a navbar item for each section
+    const navItems = items.map((item, i) => 
+            React.createElement("li", {key: i, className: "nav-item"}, 
+                React.createElement("a", {className: "nav-link", ...item.props}, item.title)))
 
     return (
         React.createElement("nav", {className: "navbar navbar-dark bg-dark"},
