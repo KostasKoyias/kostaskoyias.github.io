@@ -41,12 +41,44 @@ hr{
 }
 
 /* Intro */
+body{
+    background : url("https://images.unsplash.com/photo-1489844097929-c8d5b91c456e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80");
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#intro img{
+    width: 25%;
+    margin: -5rem auto 0 auto;
+    border-radius: 50%;
+}
+
+#intro ul{
+    margin-bottom: 0;
+}
+
+#intro{
+    width: 40%;
+    margin: 7rem auto;
+}
+
+.card{
+    text-align: justify;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+.card-title{
+    text-align: center;
+}
 
 /* Work */
 
 /* Footer */
 footer {
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
     width: 100%;
