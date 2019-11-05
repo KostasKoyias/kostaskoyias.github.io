@@ -7,7 +7,7 @@ function itemToColumn(col, index){
 function itemToAnchorList(link, index){
     return e("li", {key: index, className: "nav-item"},
                 e("a", {className: "nav-link", ...link.props},
-                e("i", {className: link.icon}),link.msg))
+                    e("i", {className: link.icon}), link.msg))
 }
 
 export { itemToColumn, addKey, itemToAnchorList }

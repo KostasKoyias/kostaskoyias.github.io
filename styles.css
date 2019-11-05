@@ -12,13 +12,18 @@ hr{
 }
 
 #hub-link{
-    padding-left: 3rem;
+    padding-left: 4.5rem;
+    color: lightgray;
+}
+
+#hub-link i{
+    font-size: 2.5rem;
 }
 
 #nav-list{
     text-align: right;
     display: inherit;
-    padding-right: 3rem;
+    padding-right: 2.5rem;
 }
 
 .nav-item, #work li{
@@ -73,8 +78,8 @@ hr{
     margin-bottom: 1.5rem !important;
 }
 
-#work .card .card-title{
-    background-color: #343a40;
+#work .card .card-title {
+    background-color: #343a40 !important;
     color: snow;
     font-weight: 350;
 }
@@ -183,4 +188,18 @@ footer p{
 
 footer .row div:first-child{
     padding-left: 5rem;
+}
+
+.footer-copyright{
+    background-color: #201d1d;
+}
+
+.footer-copyright a{
+    color: snow;
+    font-weight: bold;
+}
+
+.footer-copyright a:hover{
+    color: lightgray;
+    text-decoration: underline;
 }
