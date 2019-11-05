@@ -4,7 +4,7 @@ const alertMsg = "!! Failed to load projects. Please check your connection & rel
 
 const topics = {
     api : (repo) => api + "/repos/" + userName + "/" + repo + "/topics",
-    list: ["linux", "compiler-design", "web", "data-science"]
+    list: ["linux", "compiler-design", "web", "data-science", "forks-contributions"]
 }
 
 export { api, repos, topics, alertMsg, grid }
