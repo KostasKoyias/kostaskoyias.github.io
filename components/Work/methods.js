@@ -39,27 +39,31 @@ function processResponse(response){
     // exclude not important projects
     const importantProjects = response.filter(r => isImportant(r))
 
-    // initialize a list for each topic
-    let topicsMap = {}
-    topics.list.concat(["other"]).forEach(t => topicsMap[t] = [])
+    // classify repos, assigning the to the appropriate topic list
+    importantProjects.forEach(repo => {
+        const topic = getTopic(repo)
+        topics.map[topic].list = [repo, ...(topics.map[topic].list || [])]
+    })
 
     // create a card grid for each topic
     let projects = []
-    importantProjects.forEach(repo => topicsMap[getTopic(repo)].push(repo))
-    for(let key of Object.keys(topicsMap))
-        projects.push(e("div", {key: key, className: "topic"}, 
-            e("h2", null, key), 
-            cardGrid(topicsMap[key].map(repoToCard))))
+    for(let key of Object.keys(topics.map))
+        projects.push(
+            e("div", null, 
+                e("div", {key: key, className: "topic"}, key,
+                    e("i", {className: topics.map[key].icon})), 
+                topics.map[key].list && cardGrid(topics.map[key].list.map(repoToCard))))
 
     return e("div", {id: "work-body"}, projects)
 }
+
 
 // classify each project to the very first matching topic
 function getTopic(repo){
     if(repo.fork)
         return "forks-contributions"
 
-    for(let topic of topics.list){
+    for(let topic in topics.map){
         if(repo.topics.find(name => name.toLowerCase().includes(topic.toLowerCase())))
             return topic
     }

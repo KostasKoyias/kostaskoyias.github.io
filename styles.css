@@ -153,10 +153,21 @@ hr{
     float: right;
 }
 
-.topic h2{
+.topic {
+    font-size: xx-large;
+    padding-left: 1rem;
     font-weight: 300;
     margin: 0 1rem;
     text-align: left;
+}
+
+.topic i{
+    font-size: x-large;
+    padding-left: .5rem;
+}
+
+.fa-d-and-d{
+    font-size: xx-large !important;
 }
 
 /* Footer */

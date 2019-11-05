@@ -4,7 +4,11 @@ const alertMsg = "!! Failed to load projects. Please check your connection & rel
 
 const topics = {
     api : (repo) => api + "/repos/" + userName + "/" + repo + "/topics",
-    list: ["linux", "compiler-design", "web", "data-science", "forks-contributions"]
+    map: {
+           "linux": {icon: "fab fa-linux"},  "compiler-design": {},//{icon: "fab fa-xl fa-d-and-d"},
+           "web": {}/*{icon: "fas fa-code"}*/,  "data-science": {},//{icon: "fas fa-database"}, 
+           "forks-contributions": {}/*{icon: "fas fa-share-alt"}*/, "other" : {}
+        }
 }
 
 export { api, repos, topics, alertMsg, grid }
