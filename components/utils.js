@@ -10,7 +10,7 @@ function Spinner(type){
 function Card(props){
     const { key, title, description, urls, ...rest } = props 
     const maxDescription = 100, croppedDescription = description.slice(0, maxDescription) + "..."
-    const linkProps = {target: "blank", className: "card-link"}
+    const linkProps = {target: "_blank", className: "card-link"}
 
     return (e("div", {key: key, className: "card"}, 
                 e("h5", {className: "card-title"}, title), 
