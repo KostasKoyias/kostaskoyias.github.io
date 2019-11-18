@@ -31,10 +31,10 @@ const cols = [
             // links
             React.createElement("ul", null,  
                 [
-                    {icon: "fab fa-github-square", msg: "github", props: {href: url.github, target: "blank"}},
-                    {icon: "fab fa-linkedin", msg: "linkedIn", props: {href: url.linkedIn, target: "blank"}},
+                    {icon: "fab fa-github-square", msg: "github", props: {href: url.github, target: "_blank"}},
+                    {icon: "fab fa-linkedin", msg: "linkedIn", props: {href: url.linkedIn, target: "_blank"}},
                     {icon: "fas fa-envelope", msg: url.mail, props: {href: "mailto:" + url.mail}},
-                    {icon: "fab fa-dropbox", msg: "Resume", props: {href: url.cv, target: "blank"}},
+                    {icon: "fab fa-dropbox", msg: "Resume", props: {href: url.cv, target: "_blank"}},
                 ].map(itemToAnchorList)
             )
         ].map(addKey)
@@ -48,10 +48,10 @@ const cols = [
             // links
             React.createElement("ul", null,  
                 [
-                    {icon: "fab fa-facebook", msg: "facebook", props: {href: url.fb, target: "blank"}},
-                    {icon: "fab fa-youtube-square", msg: "youtube", props: {href: url.uTube, target: "blank"}},
+                    {icon: "fab fa-facebook", msg: "facebook", props: {href: url.fb, target: "_blank"}},
+                    {icon: "fab fa-youtube-square", msg: "youtube", props: {href: url.uTube, target: "_blank"}},
                     {icon: "fas fa-phone-square", msg: url.phone, props : {href: ""}},
-                    {icon: "fab fa-instagram", msg: "instagram", props: {href: url.instagram, target: "blank"}}
+                    {icon: "fab fa-instagram", msg: "instagram", props: {href: url.instagram, target: "_blank"}}
                 ].map(itemToAnchorList)
             )
         ].map(addKey)

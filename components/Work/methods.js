@@ -1,13 +1,31 @@
 import { e, Card } from '../utils.js'
 import { api, grid, topics } from './config.js'
 
+// add an icon to the title if the repository is starred or if this it deployed
+// but distinguish current repository from the others
+function getTitle(repo){
+    const { href } = window.location, anchorIndex = href.indexOf('#')
+    const thisPage = anchorIndex > 0 ? href.slice(0, anchorIndex) : href
+
+    if(repo.watchers > 0)
+        return e("span", null, repo.name, e("i", {className: "far fa-star"}))
+    else if(repo.homepage && thisPage == repo.homepage)
+        return e("span", null, repo.name, e("i", {className: "fas fa-globe"}))
+    else
+        return repo.name
+}
+
 // given a detailed repository description
 // create a card element out of the most important properties
 function repoToCard(repo, index){
+
+    // if repo has a web-page and it is not this repo, link to the web-page else to the source code
+    const link = (repo => repo.homepage && repo.homepage !== window.location.href ? repo.homepage : repo.html_url)
+
     const props = {
-        title: repo.watchers > 0 ? e("span", null, repo.name, e("i", {className: "far fa-star"})): repo.name,
+        title: getTitle(repo),
         description: repo.description,
-        urls: [{name: "Check it out", href: repo.html_url}],
+        urls: [{name: "Check it out", href: link(repo)}],
         language: repo.language || "None",
         //stars: repo.watchers,
         key: repo.node_id
