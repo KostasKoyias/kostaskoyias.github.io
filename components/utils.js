@@ -16,6 +16,7 @@ function Card(props){
                 e("h5", {className: "card-title"}, title), 
                 e("div", {className: "card-body"},
                     e("div", {className: "card-text"}, 
+                        //description,
                         (description.length > maxDescription ? croppedDescription : description),
                         e("ul", null, Object.keys(rest)
                         .map((k, i) => e("li", {key: i}, e("span", null, k), ": " + rest[k]))),

@@ -153,6 +153,12 @@ hr{
     float: right;
 }
 
+/*.card-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}*/
+
 .topic {
     font-size: xx-large;
     padding-left: 1rem;
@@ -163,6 +169,11 @@ hr{
 .topic i{
     font-size: x-large;
     padding-left: .5rem;
+}
+
+/* @Override */
+.fa-linux{
+    font-size: xx-large !important;
 }
 
 .fa-d-and-d{
@@ -193,7 +204,8 @@ footer ul a{
 }
 
 footer p{
-    margin: 0;
+    margin: 0 !important;
+    padding-top: 2rem;
 }
 
 footer .row div:first-child{

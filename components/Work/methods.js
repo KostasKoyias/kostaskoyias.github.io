@@ -50,9 +50,11 @@ function processResponse(response){
     // exclude sub-modules
     const isImportant = (p) => (!p.name.endsWith("ui") && !p.name.endsWith("api"))
 
-    // most recently modified projects go first, putting the starred ones on top
-    response.sort((r0, r1) => new Date(r1.pushed_at) - new Date(r0.pushed_at))
-            .sort((r0, r1) => r1.watchers - r0.watchers)
+    // starred projects go first, putting the most recently modified ones on top
+    response.sort((r0, r1) => new Date(r0.pushed_at) - new Date(r1.pushed_at))
+            .sort((r0, r1) => r0.watchers - r1.watchers)
+            
+            
     
     // exclude not important projects
     const importantProjects = response.filter(r => isImportant(r))
