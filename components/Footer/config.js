@@ -5,7 +5,7 @@ const url = {
     linkedIn: "https://www.linkedin.com/in/kostas-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
     uTube: "https://www.youtube.com/channel/UC-Bg1WdBrEKL4B9TIjh7QZw?app=desktop",
     instagram: "https://www.instagram.com/kostas_koyias/?hl=en",
-    cv: "https://www.dropbox.com/s/qjj0sm8xo0c307q/Software_Engineer.pdf?dl=0"
+    cv: "http://cgi.di.uoa.gr/~sdi1500071/CVs/software.pdf"
 }
 
 const messages = ["Make sure to check out my GitHub account where all  my projects reside.",

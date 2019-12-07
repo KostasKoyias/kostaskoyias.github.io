@@ -1,6 +1,17 @@
 const e = React.createElement
 const addKey = ((item, index) => {return {...item, key: index}})
 
+function getAge(birthday){
+    const present = new Date("2020-01-01"), birthDate = new Date(birthday)
+    const years = present.getFullYear() - birthDate.getFullYear()
+    console.log(present.getFullYear(), birthDate.getFullYear(), birthday)
+
+    if(present.getMonth() < birthDate.getMonth() || 
+        (present.getMonth() === birthDate.getMonth() && present.getDay() < birthDate.getDay()))
+        return years - 1
+    return years
+}
+
 // a simple loading spinner
 function Spinner(type){
     return(e("div", {className: "spinner-border text-" + type, role: "status"}))
@@ -26,4 +37,4 @@ function Card(props){
             ))
 }
 
-export { e, addKey, Spinner, Card }
+export { e, getAge, addKey, Spinner, Card }

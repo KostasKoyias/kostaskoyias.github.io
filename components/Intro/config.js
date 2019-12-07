@@ -1,8 +1,11 @@
-const picture = "https://scontent.fath5-1.fna.fbcdn.net/v/t1.0-1/p160x160/13094317_1017510498302986_"
-                + "4915418642867848296_n.jpg?_nc_cat=108&_nc_oc=AQlwdkpgAjIV9r2gSkNM20bYjnC9CYQWhESqDXMzBD4JGmobaskHu"
-                + "-Sib4CQp3xmoms&_nc_ht=scontent.fath5-1.fna&oh=4c531aa881574ea4e55c306e9109a59d&oe=5E46434F"
+const picture = "https://scontent.fath5-1.fna.fbcdn.net/v/t31.0-1/p160x160/" + 
+                "13119957_1017510498302986_4915418642867848296_o.jpg?_nc_cat=108" + 
+                "&_nc_ohc=d3eISciF0mAAX-9Q_KS&_nc_ht=scontent.fath5-1.fna&_nc_tp=6&" + 
+                "oh=009827900d93bb23e8ffb18eb1dc581c&oe=5EC34C7F"
+                
 
 const interests = ["Data Mining", "Machine Learning", "Artificial Intelligence", "Linux Systems"]
 
+const birthday = "1997-07-22T03:00:00"
 
-export { picture, interests }
+export { picture, interests, birthday }

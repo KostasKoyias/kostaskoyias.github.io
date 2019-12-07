@@ -53,8 +53,6 @@ function processResponse(response){
     // starred projects go first, putting the most recently modified ones on top
     response.sort((r0, r1) => new Date(r0.pushed_at) - new Date(r1.pushed_at))
             .sort((r0, r1) => r0.watchers - r1.watchers)
-            
-            
     
     // exclude not important projects
     const importantProjects = response.filter(r => isImportant(r))
@@ -69,8 +67,8 @@ function processResponse(response){
     let projects = []
     for(let key of Object.keys(topics.map))
         projects.push(
-            e("div", null, 
-                e("div", {key: key, className: "topic"}, key,
+            e("div", {key: key}, 
+                e("div", {className: "topic"}, key,
                     e("i", {className: topics.map[key].icon})), 
                 topics.map[key].list && cardGrid(topics.map[key].list.map(repoToCard))))
 

@@ -1,5 +1,5 @@
-import { interests, picture } from './config.js'
-import { e } from '../utils.js'
+import { interests, picture, birthday } from './config.js'
+import { e, getAge } from '../utils.js'
 
 function Intro(props){
 
@@ -9,10 +9,12 @@ function Intro(props){
                     e("h5", {className: "card-title"}, "About myself"), 
                     e("div", {className: "card-text"}, 
                         e("div", {id: "personal-info"}, 
-                              "My name is Konstantinos Koyias. I was born in 1997 & I am currently working"  
-                            + " towards a computer science bachelor's degree at ", 
+                              "My name is Konstantinos Koyias & I am " + getAge(birthday) + " years old.", e("br"),
+                               "I am currently working"  
+                            + " towards a B.Sc in Informatics and Telecommunications at ", 
                             e("a", {href: "http://www.di.uoa.gr/eng", target: "_blank"}, "DiT, UoA"), "."),
-                        e("div", {id: "specialty"}, "My concentration is on Data & Knowledge management and Software.", 
+                        e("div", {id: "specialty"}, 
+                            "My concentration is on Data & Knowledge Management and Software Engineering.", 
                             e("br"), "I am mostly interested in"),
                             e("ul", {id: "passion"}, 
                                 interests.map((inst, i) => e("li", {key: i}, inst))),
