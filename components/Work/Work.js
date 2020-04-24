@@ -1,11 +1,12 @@
 import { e, Spinner} from '../utils.js'
 import { api, repos, alertMsg } from './config.js'
-import { processResponse } from './methods.js'
+import { makeProjects, makeTopics } from './methods.js'
 
 class Work extends React.Component{
   constructor(){
     super()
-    this.state = {alert: false, loading: true}
+    this.state = {alert: false, projects: false, topic: 0}
+    this.makeTopics = makeTopics.bind(this)
   }
 
   // retrieve meta-data for each Github project
@@ -16,22 +17,23 @@ class Work extends React.Component{
     fetch(api + repos, {headers: {'Accept' : 'application/vnd.github.mercy-preview+json'}})
     .then(httpResponse => httpResponse.json())
       .then(data => this.setState({
-        loading: false, 
-        projects: processResponse(data)
+        projects: makeProjects(data)
       }))
-    .catch(error => {this.setState({ alert: true, loading: false }) ; console.error(error)})
+    .catch(error => {this.setState({ alert: true, projects: true }) ; console.error(error)})
   }
 
   render(){
-    const { alert, loading, projects } = this.state
-    const body = loading ? Spinner("dark") : projects
+    const { alert, projects, topic } = this.state
 
     return (
       e("div", {id: "work"}, 
         e("h1", {className: "display-4"}, "Projects on Github"),
-          body,
-          alert &&  e("div", {className: "alert alert-warning"}, alertMsg) 
-      ))
+          ! projects ? 
+            Spinner("dark") : 
+            alert ?  
+              e("div", {className: "alert alert-warning"}, alertMsg):
+              topic < projects.length && 
+                e("div", {id: "projects"}, this.makeTopics(), projects[topic].body)))
   }
 
 }

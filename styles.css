@@ -24,7 +24,7 @@ hr{
     font-size: 2.5rem;
 }
 
-.nav-list{
+#nav-list{
     text-align: right;
     display: inherit;
     padding-right: 2.5rem;
@@ -80,6 +80,11 @@ hr{
 #projects{
     min-height: 20rem;
 }
+
+#work h1:first-of-type{
+    font-size: 3rem;
+}
+
 
 #work .card{
     height: 90%;
