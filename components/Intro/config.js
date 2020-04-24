@@ -4,7 +4,10 @@ const picture = "https://scontent.fath5-1.fna.fbcdn.net/v/t31.0-1/p160x160/" +
                 "oh=009827900d93bb23e8ffb18eb1dc581c&oe=5EC34C7F"
                 
 
-const interests = ["Data Mining", "Machine Learning", "Artificial Intelligence", "Linux Systems"]
+const interests = [
+    "Competitive Programming",
+    "Linux Systems & Computer Security", 
+    "AI, Data Mining & Machine Learning"]
 
 const birthday = "1997-07-22T03:00:00"
 
