@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 hr{
     color : 'snow';
 }
@@ -20,7 +24,7 @@ hr{
     font-size: 2.5rem;
 }
 
-#nav-list{
+.nav-list{
     text-align: right;
     display: inherit;
     padding-right: 2.5rem;
@@ -73,6 +77,10 @@ hr{
 }
 
 /* Work */
+#projects{
+    min-height: 20rem;
+}
+
 #work .card{
     height: 90%;
     margin-bottom: 1.5rem !important;
@@ -143,7 +151,7 @@ hr{
 }
 
 #work .alert{
-    color: #b8d6f8;
+    color: #4d4949;
     width: 50%;
     margin: auto;
     border: 1px solid #343a40;
@@ -153,17 +161,33 @@ hr{
     float: right;
 }
 
-/*.card-text{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}*/
+
+#topics{
+    z-index: 0 !important;
+}
+
+.topic-inactive{
+    color: grey;
+}
+
+.topic-inactive:hover{
+    color: black;
+}
+
+.topic-active{
+    text-decoration: underline;
+    font-size: large;
+}
+
 
 .topic {
+    display: inline;
+    cursor: pointer;
     font-size: xx-large;
     padding-left: 1rem;
     font-weight: 300;
     text-align: left;
+    padding: 1.5rem 1.5rem 0rem 1.5rem;
 }
 
 .topic i{
