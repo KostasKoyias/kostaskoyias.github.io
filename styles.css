@@ -78,6 +78,7 @@ hr{
 
 /* Work */
 #projects{
+    margin: 1.5rem 0 5rem 0;
     min-height: 20rem;
 }
 
@@ -107,8 +108,9 @@ hr{
 }
 
 #work{
+    min-height: 100%;
     text-align: center;
-    margin: 0 5rem 2rem 10rem;
+    margin: 0 7rem;
 }
 
 #work-body{
@@ -254,3 +256,12 @@ footer .row div:first-child{
     color: lightgray;
     text-decoration: underline;
 }
+
+.dead-anchor{
+    display: block;
+    cursor: default;
+    margin-top: .75rem;
+    color: lightgray !important;
+}
+
+.dead-anchor:hover{text-decoration: none;}

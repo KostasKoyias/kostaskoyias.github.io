@@ -5,8 +5,9 @@ function itemToColumn(col, index){
 }
 
 function itemToAnchorList(link, index){
+    const className = link.props.className || "nav-link"
     return e("li", {key: index, className: "nav-item"},
-                e("a", {className: "nav-link", ...link.props},
+                e("a", {className: className, ...link.props},
                     e("i", {className: link.icon}), link.msg))
 }
 
