@@ -1,16 +1,19 @@
 import { e, Card } from '../utils.js'
-import { api, grid, topics } from './config.js'
+import { grid, topics, blacklist } from './config.js'
+
 
 // add an icon to the title if the repository is starred
 // but distinguish current repository from the others
-function getTitle(repo){
+function isThisRepo(repo){return window.location.hostname === repo.name}
+function makeTitle(repo){
+    const name = e("span", {key: 0}, repo.name)
 
-    if(window.location.hostname === repo.name)
-        return e("span", null, repo.name, e("i", {className: "fas fa-globe"}))
+    if(isThisRepo(repo))
+        return [name, e("i", {key: 1, className: "fas fa-globe"})]
     else if(repo.watchers > 0)
-        return e("span", null, repo.name, e("i", {className: "far fa-star"}))
+        return [name, e("i", {key: 1, className: "far fa-star"})]
     else
-        return repo.name
+        return [name]
 }
 
 // given a detailed repository description
@@ -18,15 +21,16 @@ function getTitle(repo){
 function repoToCard(repo, index){
 
     // if repo has a web-page and it is not this repo, link to the web-page else to the source code
-    const link = (repo => repo.homepage && repo.homepage !== window.location.href ? repo.homepage : repo.html_url)
+    const link = (repo => repo.homepage && !isThisRepo(repo) ? repo.homepage : repo.html_url || repo.links.html.href)
 
     const props = {
-        title: getTitle(repo),
+        title: makeTitle(repo),
         description: repo.description,
         urls: [{name: "Check it out", href: link(repo)}],
         language: repo.language || "None",
         //stars: repo.watchers,
-        key: repo.node_id
+        key: repo.node_id,
+        avatar: repo.links && repo.links.avatar.href
     }
 
     return Card(props)
@@ -36,7 +40,7 @@ function repoToCard(repo, index){
 function cardGrid(list){
     let rv = []
     for(let i = 0; i < list.length; i += grid.cardsPerRow)
-        rv.push(e("div", { className: "row"}, 
+        rv.push(e("div", {key: i, className: "row"}, 
             list.slice(i, i + grid.cardsPerRow)
             .map((c, index) => e("div", {key: i + index, className: "col-md-" + grid.rows/grid.cardsPerRow}, c))))
     return rv
@@ -44,52 +48,45 @@ function cardGrid(list){
 
 // create a card grid out of repository meta-data, customizing the order
 function makeProjects(response){
-    
+    if(!Array.isArray(response))
+        response = response.values
+
+    const isImportant = response.filter(r => ! blacklist.some(b => r.name.endsWith(b)))
+
     // starred projects go first, putting the most recently modified ones on top
-    response.sort((r0, r1) => new Date(r0.pushed_at) - new Date(r1.pushed_at))
+    isImportant.sort((r0, r1) => new Date(r0.pushed_at) - new Date(r1.pushed_at))
             .sort((r0, r1) => r0.watchers - r1.watchers)
     
     // classify repos, assigning each to the appropriate topic list
-    response.forEach(repo => {
-        const topic = getTopic(repo)
-        topics.map[topic].list = [repo, ...(topics.map[topic].list || [])]
+    Object.keys(topics).forEach(topic => topics[topic].list = [])
+    isImportant.forEach(repo => {
+        const topic = findTopic(repo)
+        topics[topic].list = [repo, ...topics[topic].list]
     })
 
     // create a card grid for each topic
     let projects = []
-    for(const key in topics.map)
-        projects.push(
-            Object({key: key,  
-                    body: topics.map[key].list && cardGrid(topics.map[key].list.map(repoToCard))}))
-
+    for(const key in topics)
+        if(topics[key].list.length)
+            projects.push(
+                Object({key: key,  
+                        body: cardGrid(topics[key].list.map(repoToCard))}))
+    
     return projects
 }
 
 // classify each project to the very first matching topic
-function getTopic(repo){
+function findTopic(repo){
     if(repo.fork)
         return "forks-contributions"
+    else if(!repo.topics)
+        return "other"
 
-    for(let topic in topics.map)
+    for(let topic in topics)
         if(repo.topics.find(name => name.toLowerCase().includes(topic.toLowerCase())))
             return topic
     
     return "other"
 }
 
-function makeTopics(){
-    this.makeHeader = makeHeader.bind(this)
-    const projects = this.state.projects.map(this.makeHeader)
-
-    return e("nav", {id: "topics"},  e("ul", {className: "nav-list"}, projects))
-}
-
-function makeHeader(project, index){
-    const isMainTopic = index === this.state.topic
-    const className = "topic " + (isMainTopic ? "topic-active" : "topic-inactive")
-
-    return (e("div", {className: className, onClick: _ => this.setState({topic: index})}, project.key,
-            e("i", {className: topics.map[project.key].icon}))) 
-}
-
-export { makeProjects, makeTopics }
+export { makeProjects }

@@ -1,14 +1,21 @@
-const userName = "KostasKoyias", api = "https://api.github.com", repos = "/users/" + userName + "/repos"
+const hosts = [
+    { 
+        url: "https://api.github.com/users/KostasKoyias/repos", 
+        icon: "fab fa-github"
+    },
+    {
+        url: "https://api.bitbucket.org/2.0/repositories/%7Bace2a2f8-ac28-4d09-b008-660141a872a0%7D",
+        icon: "fab fa-bitbucket"
+    }
+]
 const grid = { rows: 12, cardsPerRow: 4}
 const alertMsg = "!! Failed to load projects. Please check your connection & reload this page."
+const blacklist = ["api", "ui"]
 
 const topics = {
-    api : (repo) => api + "/repos/" + userName + "/" + repo + "/topics",
-    map: {
-           "linux": {icon: "fab fa-linux"},  "compiler-design": {},//{icon: "fab fa-xl fa-d-and-d"},
-           "web": {}/*{icon: "fas fa-code"}*/,  "data-science": {},//{icon: "fas fa-database"}, 
-           "forks-contributions": {}/*{icon: "fas fa-share-alt"}*/, "other" : {}
-        }
+    "linux": {icon: "fab fa-linux"},  "compiler-design": {},//{icon: "fab fa-xl fa-d-and-d"},
+    "web": {}/*{icon: "fas fa-code"}*/,  "data-science": {},//{icon: "fas fa-database"}, 
+    "forks-contributions": {}/*{icon: "fas fa-share-alt"}*/, "other" : {}
 }
 
-export { api, repos, topics, alertMsg, grid }
+export { hosts, topics, alertMsg, grid, blacklist }

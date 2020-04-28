@@ -79,7 +79,7 @@ hr{
 /* Work */
 #projects{
     margin: 1.5rem 0 5rem 0;
-    min-height: 20rem;
+    min-height: 25rem;
 }
 
 #work h1:first-of-type{
@@ -104,7 +104,7 @@ hr{
 }
 
 .card-title{
-    text-align: center;
+    text-align: left;
 }
 
 #work{
@@ -133,6 +133,10 @@ hr{
     padding: .5rem !important;
 }
 
+.card-title span{
+    padding-left: 1rem;
+}
+
 .card-body{
     padding: 0rem 1.25rem 1.25rem 1.25rem !important;
 }
@@ -141,6 +145,12 @@ hr{
     position: absolute;
     bottom: 0;
     display: block;
+}
+
+.card-logo{
+    border-radius: 10px;
+    float: right;
+    height: 2rem;
 }
 
 .h-beautify{
@@ -165,27 +175,13 @@ hr{
 }
 
 .card-title i{
-    float: right;
+    float: right !important;
 }
 
 
 #topics{
     z-index: 0 !important;
 }
-
-.topic-inactive{
-    color: grey;
-}
-
-.topic-inactive:hover{
-    color: black;
-}
-
-.topic-active{
-    text-decoration: underline;
-    font-size: large;
-}
-
 
 .topic {
     display: inline;
@@ -202,6 +198,17 @@ hr{
     padding-left: .5rem;
 }
 
+.topic.active{
+    text-decoration: underline;
+}
+
+
+.host-icon{
+    padding: 0rem 0.5rem !important;
+    cursor: pointer;
+}
+
+
 /* @Override */
 .fa-linux{
     font-size: xx-large !important;
@@ -213,6 +220,7 @@ hr{
 
 /* Footer */
 footer {
+    margin-top: 2rem;
     position: relative;
     left: 0;
     bottom: 0;
@@ -265,3 +273,13 @@ footer .row div:first-child{
 }
 
 .dead-anchor:hover{text-decoration: none;}
+
+/* Active - Inactive */
+.inactive{ color: grey; }
+
+.inactive:hover{ color: black; }
+
+.active{
+    cursor: default;
+    color: black;
+}

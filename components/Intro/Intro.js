@@ -4,7 +4,7 @@ import { e, getAge } from '../utils.js'
 function Intro(props){
 
     return (e("div", {id: "intro", className: "card"}, 
-                e("img", {src: picture, alt: "my-pic"}), 
+                e("img", {src: picture, alt: "picture"}), 
                 e("div", {className: "card-body"},
                     e("h5", {className: "card-title"}, "About myself"), 
                     e("div", {className: "card-text"}, 

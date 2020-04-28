@@ -5,7 +5,7 @@ const e = React.createElement
 const url = {
     mail: e("span", null, "sdi1500071", e("i", {className: "fas fa-at"}), "di.uoa.gr"),
     phone: "+30 6970307088", github: "https://github.com/KostasKoyias",
-    linkedIn: "https://www.linkedin.com/in/kostas-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
+    linkedIn: "https://www.linkedin.com/in/konstantinos-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
     uTube: "https://www.youtube.com/channel/UC-Bg1WdBrEKL4B9TIjh7QZw?app=desktop",
     instagram: "https://www.instagram.com/kostas_koyias/?hl=en",
     cv: "http://cgi.di.uoa.gr/~sdi1500071/CVs/software.pdf"
@@ -38,7 +38,7 @@ const cols = [
                     {icon: "fab fa-github-square", msg: "github", props: {href: url.github, target: "_blank"}},
                     {icon: "fab fa-linkedin", msg: "linkedIn", props: {href: url.linkedIn, target: "_blank"}},
                     {icon: "fas fa-envelope", msg: url.mail, props: {href: "#footer", className: "dead-anchor"}},
-                    {icon: "fab fa-dropbox", msg: "Resume", props: {href: url.cv, target: "_blank"}}
+                    {icon: "fas fa-file-alt", msg: " Resume", props: {href: url.cv, target: "_blank"}}
                 ].map(itemToAnchorList)
             )
         ].map(addKey)
