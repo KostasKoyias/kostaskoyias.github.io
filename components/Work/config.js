@@ -1,8 +1,8 @@
 import { githubUser } from '../config.js'
 
 const hosts = [
-    { 
-        url: githubUser + "/repos", 
+    {
+        url: githubUser + "/repos",
         icon: "fab fa-github"
     },
     {
@@ -10,14 +10,14 @@ const hosts = [
         icon: "fab fa-bitbucket"
     }
 ]
-const grid = { rows: 12, cardsPerRow: 4}
+const grid = { rows: 12, cardsPerRow: 4 }
 const alertMsg = "!! Failed to load projects. Please check your connection & reload this page."
 const blacklist = ["api", "ui"]
 
 const topics = {
-    "linux": {icon: "fab fa-linux"},  "compiler-design": {},//{icon: "fab fa-xl fa-d-and-d"},
-    "web": {}/*{icon: "fas fa-code"}*/,  "data-science": {},//{icon: "fas fa-database"}, 
-    "forks-contributions": {}/*{icon: "fas fa-share-alt"}*/, "other" : {}
+    "linux": { icon: "fab fa-linux" }, "compiler-design": {},//{icon: "fab fa-xl fa-d-and-d"},
+    "web": {}/*{icon: "fas fa-code"}*/, "data-science": {},//{icon: "fas fa-database"}, 
+    "forks-contributions": {}/*{icon: "fas fa-share-alt"}*/, "other": {}
 }
 
 export { hosts, topics, alertMsg, grid, blacklist }

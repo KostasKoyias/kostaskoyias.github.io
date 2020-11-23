@@ -2,7 +2,7 @@ const picture = "https://lh3.googleusercontent.com/pw/ACtC-3e3bpcy7FSqVhZ41ybkYq
 
 const interests = [
     "Competitive Programming",
-    "Linux Systems & Computer Security", 
+    "Linux Systems & Computer Security",
     "AI, Data Mining & Machine Learning"]
 
 const birthday = "1997-07-22T03:00:00"

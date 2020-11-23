@@ -1,13 +1,14 @@
-html{
+html {
     scroll-behavior: smooth;
 }
 
-hr{
-    color : 'snow';
+hr {
+    color: 'snow';
 }
 
 /* NavBar */
-.navbar{
+
+.navbar {
     padding: 0 !important;
     position: sticky !important;
     top: 0 !important;
@@ -15,37 +16,37 @@ hr{
     z-index: 1;
 }
 
-#hub-link{
+#hub-link {
     padding-left: 4.5rem;
     color: lightgray;
 }
 
-#hub-link i{
+#hub-link i {
     font-size: 2.5rem;
 }
 
-#nav-list{
+#nav-list {
     text-align: right;
     display: inherit;
     padding-right: 2.5rem;
 }
 
-.nav-item, #work li{
+.nav-item, #work li {
     list-style-type: none;
 }
 
-.nav-link{
+.nav-link {
     color: lightgray;
     margin-top: .75rem;
 }
 
-.nav-link:hover, .nav-link[data-on = "true"]{
+.nav-link:hover, .nav-link[data-on="true"] {
     color: white;
     font-weight: 500;
 }
 
-#avatar{
-    margin: 0rem 2rem; 
+#avatar {
+    margin: 0rem 2rem;
     width: 12%;
     cursor: pointer;
     border: 1px solid white;
@@ -54,40 +55,41 @@ hr{
 }
 
 /* Intro */
-#root{
+
+#root {
     background: rgb(208, 208, 238);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#intro img{
+#intro img {
     width: 25%;
     margin: -5rem auto 0 auto;
     border-radius: 50%;
 }
 
-#intro ul{
+#intro ul {
     margin-bottom: 0;
 }
 
-#intro{
+#intro {
     width: 45%;
     margin: 7rem auto 4rem auto;
 }
 
 /* Work */
-#projects{
+
+#projects {
     margin: 1.5rem 0 5rem 0;
     min-height: 25rem;
 }
 
-#work h1:first-of-type{
+#work h1:first-of-type {
     font-size: 3rem;
 }
 
-
-#work .card{
+#work .card {
     height: 90%;
     margin-bottom: 1.5rem !important;
 }
@@ -98,34 +100,34 @@ hr{
     font-weight: 350;
 }
 
-.card{
+.card {
     margin: 0.5rem auto auto auto;
     text-align: left !important;
 }
 
-.card-title{
+.card-title {
     text-align: left;
 }
 
-#work{
+#work {
     min-height: 100%;
     text-align: center;
     margin: 0 7rem;
 }
 
-#work-body{
+#work-body {
     margin-top: 1rem;
 }
 
-#work .spinner-border{
+#work .spinner-border {
     margin: 2rem;
 }
 
-#work ul{
+#work ul {
     padding-top: .5rem;
 }
 
-span.bold{
+span.bold {
     font-weight: bold !important;
 }
 
@@ -141,49 +143,52 @@ span.underline {
     padding-left: 1rem;
 }
 
-.card-body{
+.card-title {
+    padding: .5rem !important;
+}
+
+.card-body {
     padding: 0rem 1.25rem 1.25rem 1.25rem !important;
 }
 
-.card-link{
+.card-link {
     position: absolute;
     bottom: 0;
     display: block;
 }
 
-.card-logo{
+.card-logo {
     border-radius: 10px;
     float: right;
     height: 2rem;
 }
 
-.h-beautify{
+.h-beautify {
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 1.2;
 }
 
-#work h1{
+#work h1 {
     text-align: center;
 }
 
-#work .row{
+#work .row {
     margin-bottom: 2rem;
 }
 
-#work .alert{
+#work .alert {
     color: #4d4949;
     width: 50%;
     margin: auto;
     border: 1px solid #343a40;
 }
 
-.card-title i{
+.card-title i {
     float: right !important;
 }
 
-
-#topics{
+#topics {
     z-index: 0 !important;
 }
 
@@ -197,32 +202,32 @@ span.underline {
     padding: 1.5rem 1.5rem 0rem 1.5rem;
 }
 
-.topic i{
+.topic i {
     font-size: x-large;
     padding-left: .5rem;
 }
 
-.topic.active{
+.topic.active {
     text-decoration: underline;
 }
 
-
-.host-icon{
+.host-icon {
     padding: 0rem 0.5rem !important;
     cursor: pointer;
 }
 
-
 /* @Override */
-.fa-linux{
+
+.fa-linux {
     font-size: xx-large !important;
 }
 
-.fa-d-and-d{
+.fa-d-and-d {
     font-size: xx-large !important;
 }
 
 /* Footer */
+
 footer {
     margin-top: 2rem;
     position: relative;
@@ -232,58 +237,65 @@ footer {
     background-color: #343a40;
     color: white;
     text-align: center;
- }
+}
 
-footer ul, #work ul{
+footer ul, #work ul {
     padding: 0;
 }
 
-footer ul i{
+footer ul i {
     padding-right: .4rem;
 }
 
-footer ul a{
+footer ul a {
     padding: 0 !important;
 }
 
-footer p{
+footer p {
     margin: 0 !important;
     padding-top: 2rem;
 }
 
-footer .row div:first-child{
+footer .row div:first-child {
     padding-left: 5rem;
 }
 
-.footer-copyright{
+.footer-copyright {
     background-color: #201d1d;
 }
 
-.footer-copyright a{
+.footer-copyright a {
     color: snow;
     font-weight: bold;
 }
 
-.footer-copyright a:hover{
+.footer-copyright a:hover {
     color: lightgray;
     text-decoration: underline;
 }
 
-.dead-anchor{
+.dead-anchor {
     display: block;
     cursor: default;
     margin-top: .75rem;
     color: lightgray !important;
 }
 
-.dead-anchor:hover{text-decoration: none;}
+.dead-anchor:hover {
+    text-decoration: none;
+}
 
 /* Active - Inactive */
-.inactive{ color: grey; }
 
-.inactive:hover{ color: black; }
+.inactive {
+    color: grey;
+}
 
-.active{
+.inactive:hover {
+    color: black;
+}
+
+.active {
     cursor: default;
     color: black;
 }
