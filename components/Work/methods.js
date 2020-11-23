@@ -18,7 +18,7 @@ function makeTitle(repo){
 
 // given a detailed repository description
 // create a card element out of the most important properties
-function repoToCard(repo, index){
+function repoToCard(repo){
 
     // if repo has a web-page and it is not this repo, link to the web-page else to the source code
     const link = (repo => repo.homepage && !isThisRepo(repo) ? repo.homepage : repo.html_url || repo.links.html.href)

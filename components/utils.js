@@ -1,6 +1,10 @@
 const e = React.createElement
 const addKey = ((item, index) => {return {...item, key: index}})
 
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 function getAge(birthday){
     const present = new Date(), birthDate = new Date(birthday)
     const years = present.getFullYear() - birthDate.getFullYear()
@@ -29,9 +33,16 @@ function Card(props){
                     e("div", {className: "card-text"}, 
                         (description.length > maxDescription ? croppedDescription : description),
                         e("ul", null, Object.keys(rest)
-                        .map((k, i) => e("li", {key: i}, e("span", null, k), ": " + rest[k]))),
+                        .map((k, i) => e("li", {key: i}, e("span", {className: "bold"}, k), ": " + rest[k]))),
                         urls.map((u, i) => e("a", {href: u.href, key: i, ...linkProps}, u.name))
                     ))))
 }
 
-export { e, getAge, addKey, Spinner, Card }
+function callApi(endPoint, self) {
+    fetch(endPoint, {headers: {'Accept' : 'application/vnd.github.mercy-preview+json'}})
+    .then(httpResponse => httpResponse.json())
+      .then(data => this.updateProjects.bind(this)(data, index))
+    .catch(error => {this.setState({ alert: true, projects: true }) ; console.error(error)})
+}
+
+export { e, getAge, addKey, Spinner, Card, callApi }

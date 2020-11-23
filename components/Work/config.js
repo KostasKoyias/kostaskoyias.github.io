@@ -1,6 +1,8 @@
+import { githubUser } from '../config.js'
+
 const hosts = [
     { 
-        url: "https://api.github.com/users/KostasKoyias/repos", 
+        url: githubUser + "/repos", 
         icon: "fab fa-github"
     },
     {

@@ -6,5 +6,6 @@ const interests = [
     "AI, Data Mining & Machine Learning"]
 
 const birthday = "1997-07-22T03:00:00"
+const alertMsg = "!! Failed to load user details. Please check your connection and reload this page."
 
-export { picture, interests, birthday }
+export { picture, interests, birthday, alertMsg }

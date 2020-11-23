@@ -125,15 +125,19 @@ hr{
     padding-top: .5rem;
 }
 
-#work ul span{
-    font-weight: bold;
+span.bold{
+    font-weight: bold !important;
 }
 
-.card-title{
-    padding: .5rem !important;
+span.underline {
+    text-decoration: underline;
 }
 
-.card-title span{
+.nav-item span {
+    padding-left: .5rem
+}
+
+.card-title span {
     padding-left: 1rem;
 }
 

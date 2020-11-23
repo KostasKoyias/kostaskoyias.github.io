@@ -1,4 +1,5 @@
 import { e, Spinner} from '../utils.js'
+import { githubHeaders } from '../config.js'
 import { hosts, alertMsg } from './config.js'
 import { makeProjects } from './methods.js'
 import { makeHosts, makeTopics } from './options.js'
@@ -20,7 +21,7 @@ class Work extends React.Component{
 
   callAPI(index){
 
-    fetch(hosts[index].url, {headers: {'Accept' : 'application/vnd.github.mercy-preview+json'}})
+    fetch(hosts[index].url, {headers: githubHeaders})
     .then(httpResponse => httpResponse.json())
       .then(data => this.updateProjects.bind(this)(data, index))
     .catch(error => {this.setState({ alert: true, projects: true }) ; console.error(error)})
