@@ -27,6 +27,10 @@ class Intro extends React.Component {
     setStatus(data) {
         let status = []
         for (const [key, value] of Object.entries(this.state.details)) {
+            if (!data[key]) { // omit missing status properties
+                continue
+            }
+
             let actualKey = value.alias || key
             status.push(
                 e("li", { key: actualKey, className: "nav-item " },
@@ -38,10 +42,13 @@ class Intro extends React.Component {
 
         this.setState({
             status:
-                e("div", { id: "status" },
-                    e("br"), e("h5", { className: "card-title" }, "Current Status"),
-                    status
-                )
+                status.length ?
+                    e("div", { id: "status" },
+                        e("br"), e("h5", { className: "card-title" }, "Current Status"),
+                        status
+                    )
+                    :
+                    null
         })
     }
 
