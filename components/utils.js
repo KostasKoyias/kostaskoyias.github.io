@@ -38,7 +38,7 @@ function Card(props) {
             ))))
 }
 
-function callApi(endPoint, self) {
+function callApi(endPoint) {
     fetch(endPoint, { headers: { 'Accept': 'application/vnd.github.mercy-preview+json' } })
         .then(httpResponse => httpResponse.json())
         .then(data => this.updateProjects.bind(this)(data, index))

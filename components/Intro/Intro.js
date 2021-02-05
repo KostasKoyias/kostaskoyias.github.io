@@ -1,4 +1,4 @@
-import { interests, birthday, alertMsg, picture } from './config.js'
+import { interests, birthday, alertMsg, picture, focus } from './config.js'
 import { e, getAge, Spinner } from '../utils.js'
 import { githubUser, githubHeaders } from '../config.js'
 
@@ -64,11 +64,11 @@ class Intro extends React.Component {
                         "Obtained a B.Sc in Informatics and Telecommunications at ",
                         e("a", { href: "http://www.di.uoa.gr/eng", target: "_blank" }, "DiT, UoA"),
                         " in September 2020,", e("br"), "concentrated in Data & Knowledge Management as well as Software Engineering."),
+                    e("div", { id: "specialization" }, e("br"), focus),
                     e("div", { id: "interests" },
-                        e("br"), "I am mostly interested in"),
-                    e("ul", { id: "passion" },
-                        interests.map((inst, i) => e("li", { key: i }, inst))),
-                    "I have also worked on Web Development for a while."
+                        e("br"), "I am also interested in",
+                        e("ul", { id: "passion" },
+                            interests.map((inst, i) => e("li", { key: i }, inst)))),
                 ),
                 this.state.isCallDone ?
                     this.state.alert ?
