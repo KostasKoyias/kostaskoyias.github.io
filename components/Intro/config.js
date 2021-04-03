@@ -1,4 +1,4 @@
-const picture = "https://lh3.googleusercontent.com/pw/ACtC-3e3bpcy7FSqVhZ41ybkYq3V-Mb6Upikok0YS3kdBjAfNdx1QyUWus9NXElwTAuQluqYJMpUeVuw5GgTIPJgiTOgMLKUemUaYe9gnfhIIRhE-kOFWenoLVRQscX7qHnphQgf5baVXcIhQB6fpBO6L12O=s1664-no?authuser=0"
+const picture = "images/avatar.jpeg"
 
 const focus = 
     "I mainly focus on building web applications, using the latest libraries, frameworks and web services out there. " +
