@@ -3,7 +3,7 @@ import { addKey, itemToAnchorList } from './methods.js'
 const e = React.createElement
 
 const url = {
-    mail: e("span", null, "sdi1500071", e("i", { className: "fas fa-at" }), "di.uoa.gr"),
+    mail: e("span", null, "konstantinos.kogias97", e("i", { className: "fas fa-at" }), "gmail.com"),
     phone: "+30 6970307088", github: "https://github.com/KostasKoyias",
     linkedIn: "https://www.linkedin.com/in/konstantinos-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
     uTube: "https://www.youtube.com/channel/UC-Bg1WdBrEKL4B9TIjh7QZw?app=desktop",
@@ -27,7 +27,7 @@ const cols = [
         ].map(addKey)
     },
     {
-        pos: "col-md-2 offset-md-2",
+        pos: "col-md-3 offset-md-1",
         children: [
             // header
             e("h3", { className: "h-beautify" }, "Work"),

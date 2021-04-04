@@ -1,8 +1,8 @@
-const picture = "images/avatar.jpeg"
+const picture = "images/self.jpeg"
 
 const focus = 
     "I mainly focus on building web applications, using the latest libraries, frameworks and web services out there. " +
-    "I try and stay up to date while always exploring new technologies and tackling challenging real-world problems."
+    "I try and stay up to date while always exploring new technologies while solving challenging real-world problems."
 
 const interests = [
     "Competitive Programming",
