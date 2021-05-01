@@ -7,12 +7,7 @@ String.prototype.capitalize = function () {
 
 function getAge(birthday) {
     const present = new Date(), birthDate = new Date(birthday)
-    const years = present.getFullYear() - birthDate.getFullYear()
-
-    if (present.getMonth() < birthDate.getMonth() ||
-        (present.getMonth() === birthDate.getMonth() && present.getDay() < birthDate.getDay()))
-        return years - 1
-    return years
+    return new Date(new Date(present.getTime() - birthDate.getTime())).getUTCFullYear() - 1970
 }
 
 // a simple loading spinner
