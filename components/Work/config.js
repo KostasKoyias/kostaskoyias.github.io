@@ -1,12 +1,14 @@
-import { githubUser } from '../config.js'
+import { githubUser, githubHeaders } from '../config.js'
 
 const hosts = [
     {
         url: githubUser + "/repos",
+        headers: githubHeaders,
         icon: "fab fa-github"
     },
     {
         url: "https://api.bitbucket.org/2.0/repositories/%7Bace2a2f8-ac28-4d09-b008-660141a872a0%7D",
+        headers: {},
         icon: "fab fa-bitbucket"
     }
 ]
