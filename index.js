@@ -1,3 +1,5 @@
 import App from './components/App.js'
 
-ReactDOM.render(React.createElement(App), document.getElementById('root'))
+const e = React.createElement
+
+ReactDOM.render(e(App), document.getElementById('root'))

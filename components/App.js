@@ -3,14 +3,16 @@ import Intro from './Intro/Intro.js'
 import Work from './Work/Work.js'
 import Footer from './Footer/Footer.js'
 
+const e = React.createElement
+
 function App() {
 
   return (
-    React.createElement("div", null,
-      React.createElement(Nav),
-      React.createElement(Intro, { id: "about" }),
-      React.createElement(Work, { id: "work" }),
-      React.createElement(Footer, { id: "contact" })
+    e("div", null,
+      e(Nav),
+      e(Intro, { id: "about" }),
+      e(Work, { id: "work" }),
+      e(Footer, { id: "contact" })
     ))
 }
 
