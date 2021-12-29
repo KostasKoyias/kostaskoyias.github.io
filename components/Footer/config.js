@@ -5,7 +5,7 @@ const e = React.createElement
 const url = {
     mail: e("span", null, "konstantinos.kogias97", e("i", { className: "fas fa-at" }), "gmail.com"),
     phone: "+30 6970307088", github: "https://github.com/KostasKoyias",
-    linkedIn: "https://www.linkedin.com/in/konstantinos-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
+    linkedIn: "https://www.linkedin.com/in/kostas-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
     uTube: "https://www.youtube.com/channel/UC-Bg1WdBrEKL4B9TIjh7QZw?app=desktop",
     instagram: "https://www.instagram.com/kostas_koyias/?hl=en",
     cv: "/docs/CV.pdf"
