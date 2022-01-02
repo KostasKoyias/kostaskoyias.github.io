@@ -1,4 +1,4 @@
-import { e, Card } from '../utils.js'
+import { Card } from '../utils.js'
 import { grid, topics, blacklist } from './config.js'
 
 
@@ -6,12 +6,12 @@ import { grid, topics, blacklist } from './config.js'
 // but distinguish current repository from the others
 function isThisRepo(repo) { return window.location.hostname === repo.name }
 function makeTitle(repo) {
-    const name = e("span", { key: 0 }, repo.name)
+    const name = <span key={0}>{repo.name}</span>
 
     if (isThisRepo(repo))
-        return [name, e("i", { key: 1, className: "fas fa-globe" })]
+        return [name, <i key={1} className="fas fa-globe" />]
     else if (repo.watchers > 0)
-        return [name, e("i", { key: 1, className: "far fa-star" })]
+        return [name, <i key={1} className="far fa-star" />]
     else
         return [name]
 }
@@ -40,9 +40,12 @@ function repoToCard(repo) {
 function cardGrid(list) {
     let rv = []
     for (let i = 0; i < list.length; i += grid.cardsPerRow)
-        rv.push(e("div", { key: i, className: "row" },
-            list.slice(i, i + grid.cardsPerRow)
-                .map((c, index) => e("div", { key: i + index, className: "col-md-" + grid.rows / grid.cardsPerRow }, c))))
+        rv.push(<div key={i} className="row">
+            {list.slice(i, i + grid.cardsPerRow)
+                .map((c, index) => <div key={i + index} className={"col-md-" + grid.rows / grid.cardsPerRow}>{c}</div>)}
+
+        </div>)
+
     return rv
 }
 

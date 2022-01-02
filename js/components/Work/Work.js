@@ -1,4 +1,4 @@
-import { e, Spinner } from '../utils.js'
+import { Spinner } from '../utils.js'
 import { hosts, alertMsg } from './config.js'
 import { makeProjects } from './methods.js'
 import { makeHosts, makeTopics } from './options.js'
@@ -19,7 +19,7 @@ class Work extends React.Component {
   }
 
   callAPI(index) {
-    const  { url, headers } = hosts[index]
+    const { url, headers } = hosts[index]
 
     fetch(url, { headers })
       .then(httpResponse => httpResponse.json())
@@ -45,14 +45,20 @@ class Work extends React.Component {
     const { alert, projects, topic } = this.state, header = this.makeHosts()
 
     return (
-      e("div", { id: "work" },
-        header,
-        !projects ?
+      <div id="work">
+        {header}
+        {!projects ?
           Spinner("dark") :
           alert ?
-            e("div", { className: "alert alert-warning" }, alertMsg) :
+            <div className="alert alert-warning">{alertMsg}</div>
+            :
             topic < projects.length &&
-            e("div", { id: "projects" }, projects.length > 1 && this.makeTopics(), projects[topic].body)))
+            <div id="projects">
+              {projects.length > 1 && this.makeTopics()}
+              {projects[topic].body}
+            </div>
+        }
+      </div>)
   }
 }
 

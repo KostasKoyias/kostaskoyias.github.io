@@ -17,5 +17,14 @@ watchers count, starring those having at least 1
 & then by their latest modification time, putting the most recently updated on
 top of their corresponding topic list.
 
+## How to run and develop
+
+1. Please run `npm install` for all dependencies to be installed
+2. Then, `npm run build` to build the project, converting JSX to vanilla JS, don't wait for it to stop
+3. Finally, please run `npm start` for the application to start
+
+To develop, replace the 2 very steps with `npm run dev`.  
+This is both running a tiny server at port 3000 and watching for any code changes to be compiled.
+
 Thanks for reading, make sure to
-[check it out](https://kostaskoyias.github.io).
+[check it out live](https://kostaskoyias.github.io).

@@ -1,4 +1,4 @@
-const picture = "images/self.jpeg"
+const picture = "../images/self.jpeg"
 
 const focus = 
     "My main focus is on building web apps, always exploring the latest libraries, frameworks and web services out there by solving challenging real-world problems."
