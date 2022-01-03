@@ -26,5 +26,12 @@ top of their corresponding topic list.
 To develop, replace the 2 very steps with `npm run dev`.  
 This is both running a tiny server at port 3000 and watching for any code changes to be compiled.
 
+## How to publish
+
+1. Decide which branch is the main branch meant to be published. All javascript code goes into the `js` directory
+2. After commiting and pushing, run `./publish {{main_branch}} {{gh_pages_branch}}`, where branch names default to `master` and `gh-pages`
+This will make a `{{gh_pages_branch}}` branch point to `{{main_branch}}`, check it out, build the JS files and push the output to that branch
+3. Set the source branch in Github pages manually to the `{{gh_pages_branch}}`
+
 Thanks for reading, make sure to
 [check it out live](https://kostaskoyias.github.io).
