@@ -22,14 +22,18 @@ git branch -f "$GH_PAGES_BRANCH" "$ORIGIN_MAIN_BRANCH"
 git checkout "$GH_PAGES_BRANCH"
 
 # Build project
-npm install
-npm run build
+echo " > Building project"
+npm install &> /dev/null
+npm run build &> /dev/null
 
 # Commit the static files and push
-git add .
-git add "$BUILD_FOLDER" -f
-git commit -m "Publishing commit $main_commit"
-git push --set-upstream origin HEAD --force
+echo " > Commiting changes"
+git add . &> /dev/null
+git add "$BUILD_FOLDER" -f &> /dev/null
+git commit -m "Publishing commit $main_commit" &> /dev/null
+
+echo " > Pushing changes"
+git push --set-upstream origin HEAD --force &> /dev/null
 
 git checkout "$MAIN_BRANCH"
-echo "All done, please make sure branch '$GH_PAGES_BRANCH' is set as the source branch in your Pages settings on Github for this repo"
+echo "\n > All done, please make sure branch '$GH_PAGES_BRANCH' is set as the source branch in your Pages settings on Github for this repo"
