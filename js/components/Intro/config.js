@@ -1,5 +1,3 @@
-const picture = "../images/self.jpeg"
-
 const focus = 
     "My main focus is on building web apps, always exploring the latest libraries, frameworks and web services out there by solving challenging real-world problems."
 
@@ -11,4 +9,4 @@ const interests = [
 const birthday = "1997-07-22T03:00:00"
 const alertMsg = "!! Failed to load user details. Please check your connection and reload this page."
 
-export { picture, interests, birthday, alertMsg, focus }
+export { interests, birthday, alertMsg, focus }

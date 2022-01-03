@@ -1,4 +1,4 @@
-import { interests, birthday, alertMsg, picture, focus } from './config.js'
+import { interests, birthday, alertMsg, focus } from './config.js'
 import { getAge, Spinner } from '../utils.js'
 import { githubUser, githubHeaders } from '../config.js'
 
@@ -8,6 +8,7 @@ class Intro extends React.Component {
         this.state = {
             alert: false,
             isCallDone: false,
+            avatar: null,
             details: {
                 "bio": { alias: "position", icon: "fas fa-briefcase" },
                 "company": { icon: "fas fa-building" },
@@ -19,7 +20,7 @@ class Intro extends React.Component {
     componentDidMount() {
         fetch(githubUser, { headers: githubHeaders })
             .then(httpResponse => httpResponse.json())
-            .then(data => this.setState({ details: this.setStatus(data), isCallDone: true }))
+            .then(data => this.setState({ details: this.setStatus(data), avatar: data["avatar_url"], isCallDone: true }))
             .catch(error => { this.setState({ alert: true }); console.error(error) })
     }
 
@@ -58,7 +59,7 @@ class Intro extends React.Component {
     render() {
 
         return <div id="intro" className="card">
-            <img src={picture} alt="picture" />
+            {this.state.avatar && <img src={this.state.avatar} alt="picture" />}
             <div className="card-body">
                 <h5 className="card-title">About myself</h5>
                 <div className="card-text">
