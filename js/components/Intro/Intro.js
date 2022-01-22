@@ -20,12 +20,15 @@ class Intro extends React.Component {
     componentDidMount() {
         fetch(githubUser, { headers: githubHeaders })
             .then(httpResponse => httpResponse.json())
-            .then(data => this.setState({ details: this.setStatus(data), avatar: data["avatar_url"], isCallDone: true }))
+            .then(d => this.onMount(d))
             .catch(error => { this.setState({ alert: true }); console.error(error) })
     }
 
-    setStatus(data) {
+    onMount(data) {
         let status = []
+        /**
+         * @param {{alias: string, icon: string!}} value
+         */
         for (const [key, value] of Object.entries(this.state.details)) {
             if (!data[key]) { // omit missing status properties
                 continue
@@ -44,6 +47,8 @@ class Intro extends React.Component {
         }
 
         this.setState({
+            avatar: data["avatar_url"],
+            isCallDone: true,
             status:
                 status.length ?
                     <div id="status">
@@ -66,7 +71,7 @@ class Intro extends React.Component {
                     <div id="personal-info">
                         {"My name is Konstantinos Koyias & I am " + getAge(birthday) + " years old."}<br />
                         {"Obtained a B.Sc in Informatics and Telecommunications at "}
-                        <a href="http://www.di.uoa.gr/eng" target="_blank">DiT UoA</a>
+                        <a href="https://www.di.uoa.gr/eng" target="_blank">DiT UoA</a>
                         {" in September 2020"}
                         <br />
                         {"concentrated in Data & Knowledge Management as well as Software Engineering."},

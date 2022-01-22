@@ -1,6 +1,18 @@
 import { Card } from '../utils.js'
 import { grid, topics, blacklist } from './config.js'
 
+/**
+ * @param {{
+  name: string,
+  node_id: string,
+  watchers: number,
+  homepage: string,
+  html_url: string,
+  pushed_at: string,
+  fork: boolean,
+  topics: Array
+}} repo
+ */
 
 // add an icon to the title if the repository is starred
 // but distinguish current repository from the others

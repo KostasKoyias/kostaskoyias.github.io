@@ -11,7 +11,7 @@ function getAge(birthday) {
 
 // a simple loading spinner
 function Spinner(type) {
-    return <div className={"spinner-border text-" + type} role="status"></div>
+    return <div className={"spinner-border text-" + type} role="status" />
 }
 
 // create a Card Component with title, description, an unordered list of properties and a list of links
@@ -19,8 +19,7 @@ function Card(props) {
     const { key, title, description, avatar, urls, ...rest } = props
     const maxDescription = 200, croppedDescription = description.slice(0, maxDescription) + "..."
     const linkProps = { target: "_blank", className: "card-link" }
-    const logo = avatar && <img key={Math.max(...title.map(t => t.key)) + 1} className="card-logo" src={avatar} />
-
+    const logo = avatar && <img key={Math.max(...title.map(t => t.key)) + 1} className="card-logo" src={avatar} alt="cardImage" />
     return (<div key={key} className="card">
         <h5 className="card-title">{[...title, logo]}</h5>
         <div className="card-body">

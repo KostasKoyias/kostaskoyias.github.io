@@ -11,7 +11,7 @@ function makeHosts() {
 }
 
 function makeIcon(host, index) {
-    const className = host.icon + " host-icon " + (index != this.state.host ? "inactive" : "active")
+    const className = host.icon + " host-icon " + (index !== this.state.host ? "inactive" : "active")
     const props = {
         title: host.icon.split("-")[1],
         "data-index": index,

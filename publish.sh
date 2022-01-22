@@ -1,4 +1,4 @@
-#/bin/zsh
+#!/bin/zsh
 
 # Branch the source code of which is meant to be built and published
 MAIN_BRANCH="${1-"master"}"
@@ -12,7 +12,7 @@ BUILD_FOLDER="build"
 
 # Find out where the main branch points to
 main_commit=$(git rev-parse --verify "$ORIGIN_MAIN_BRANCH" 2>/dev/null)
-if [ $? -ne 0 ]; then
+if [ -z "$main_commit" ]; then
     echo "Could not locate branch '$ORIGIN_MAIN_BRANCH', please create it or use another branch"
     exit 1
 fi
@@ -36,4 +36,4 @@ echo " > Pushing changes"
 git push --set-upstream origin HEAD --force &> /dev/null
 
 git checkout "$MAIN_BRANCH"
-echo "\n > All done, please make sure branch '$GH_PAGES_BRANCH' is set as the source branch in your Pages settings on Github for this repo"
+printf "\n > All done, please make sure branch '%s' is set as the source branch in your Pages settings on Github for this repo\n" "$GH_PAGES_BRANCH"
