@@ -3,18 +3,12 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 const addKey = ((item, index) => { return { ...item, key: index } })
 
-String.prototype.capitalize = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
-
-function getAge(birthday) {
+const getAge = (birthday) => {
     const present = new Date(), birthDate = new Date(birthday)
     return new Date(new Date(present.getTime() - birthDate.getTime())).getUTCFullYear() - 1970
 }
 
-function createIcon(iconDefinition, props) {
-    return <FontAwesomeIcon icon={iconDefinition} {...props} />;
-}
+const createIcon = (iconDefinition, props) => <FontAwesomeIcon icon={iconDefinition} {...props} />
 
 // a simple loading spinner
 function Spinner(type) {

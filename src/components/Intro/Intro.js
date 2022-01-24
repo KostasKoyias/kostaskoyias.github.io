@@ -40,10 +40,11 @@ class Intro extends React.Component {
             status.push(
                 <li key={actualKey} className="nav-item">
                     {createIcon(value.icon)}
-                    <span className="underline">
-                        {actualKey.capitalize()}
-                        {": " + data[key]}
+                    <span className="status-key">
+                        {actualKey}
                     </span>
+                    {":"}
+                    <span>{data[key]}</span>
                 </li>
             )
         }
@@ -73,7 +74,7 @@ class Intro extends React.Component {
                     <div id="personal-info">
                         {"My name is Konstantinos Koyias & I am " + getAge(birthday) + " years old."}<br />
                         {"Obtained a B.Sc in Informatics and Telecommunications at "}
-                        <a href="https://www.di.uoa.gr/eng" target="_blank">DiT UoA</a>
+                        <a href="https://www.di.uoa.gr/eng" target="_blank" rel="noreferrer">DiT UoA</a>
                         {" in September 2020"}
                         <br />
                         {"concentrated in Data & Knowledge Management as well as Software Engineering."},

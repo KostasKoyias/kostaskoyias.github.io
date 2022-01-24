@@ -18,8 +18,8 @@ import {faGlobe, faStar} from "@fortawesome/free-solid-svg-icons";
 
 // add an icon to the title if the repository is starred
 // but distinguish current repository from the others
-function isThisRepo(repo) { return window.location.hostname === repo.name }
-function makeTitle(repo) {
+const isThisRepo = (repo) => window.location.hostname === repo.name
+const makeTitle = (repo) => {
     const name = <span key={0}>{repo.name}</span>
     const icon = isThisRepo(repo) ?
         faGlobe
@@ -31,7 +31,7 @@ function makeTitle(repo) {
 
 // given a detailed repository description
 // create a card element out of the most important properties
-function repoToCard(repo) {
+const repoToCard = (repo) => {
 
     // if repo has a web-page and it is not this repo, link to the web-page else to the source code
     const link = (repo => repo.homepage && !isThisRepo(repo) ? repo.homepage : repo.html_url || repo.links.html.href)
@@ -50,7 +50,7 @@ function repoToCard(repo) {
 }
 
 // create a row-column type grid filled with cards
-function cardGrid(list) {
+const cardGrid = (list) => {
     let rv = []
     for (let i = 0; i < list.length; i += grid.cardsPerRow)
         rv.push(<div key={i} className="row">
@@ -63,7 +63,7 @@ function cardGrid(list) {
 }
 
 // create a card grid out of repository meta-data, customizing the order
-function makeProjects(response) {
+const makeProjects = (response) => {
     if (!Array.isArray(response))
         response = response.values
 
@@ -94,7 +94,7 @@ function makeProjects(response) {
 }
 
 // classify each project to the very first matching topic
-function findTopic(repo) {
+const findTopic = (repo) => {
     if (repo.fork)
         return "forks-contributions"
     else if (!repo.topics)

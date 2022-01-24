@@ -10,7 +10,7 @@ function Footer() {
         <div className="row">{cols.map(itemToColumn)}</div>
       </div>
       <div className="footer-copyright text-center py-3">
-        Published with <a target="_blank" href="https://pages.github.com/">GitHub Pages</a>
+        Published with <a href="https://pages.github.com/" target="_blank" rel="noreferrer">GitHub Pages</a>
       </div>
     </footer>)
 }

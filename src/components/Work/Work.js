@@ -10,8 +10,8 @@ class Work extends React.Component {
   constructor() {
     super()
     this.state = { alert: false, projects: false, topic: 0, host: 0 }
-    this.makeHosts = makeHosts.bind(this)
-    this.makeTopics = makeTopics.bind(this)
+    this.switchHost = this.switchHost.bind(this)
+    this.updateProjects = this.updateProjects.bind(this);
   }
 
   componentDidMount() {
@@ -20,31 +20,32 @@ class Work extends React.Component {
     this.callAPI(this.state.host)
   }
 
-  callAPI(index) {
-    const { url, headers } = hosts[index]
+  callAPI(host) {
+    const { url, headers } = hosts[host]
 
     fetch(url, { headers })
       .then(httpResponse => httpResponse.json())
-      .then(data => this.updateProjects.bind(this)(data, index))
+      .then(data => this.updateProjects(data, host))
       .catch(error => {
         this.setState({ alert: true, projects: true })
         console.error(error)
       })
   }
 
-  switchHost(index) {
-    const newState = {projects: hosts[index].projects, topic: 0, host: index}
-    this.setState(newState, !newState.projects ? _ => this.callAPI(index) : null)
+  switchHost(host) {
+    const newState = {projects: hosts[host].projects, topic: 0, host: host}
+    this.setState(newState, !newState.projects ? _ => this.callAPI(host) : null)
   }
 
-  updateProjects(data, index) {
+  updateProjects(data, host) {
     const projects = makeProjects(data)
-    hosts[index].projects = projects
-    this.setState({ projects: projects, host: index })
+    hosts[host].projects = projects
+    this.setState({ projects, host })
   }
 
   render() {
-    const { alert, projects, topic } = this.state, header = this.makeHosts()
+    const { alert, projects, topic, host } = this.state
+    const header = makeHosts(host, this.switchHost)
 
     return (
       <div id="work">
@@ -56,7 +57,7 @@ class Work extends React.Component {
             :
             topic < projects.length &&
             <div id="projects">
-              {projects.length > 1 && this.makeTopics()}
+              {projects.length > 1 && makeTopics(projects, topic, (topic) => this.setState({ topic }))}
               {projects[topic].body}
             </div>
         }

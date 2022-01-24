@@ -13,7 +13,7 @@ function Nav() {
 
     return (
         <nav className="navbar navbar-dark bg-dark">
-            <a id="hub-link" href="#">
+            <a id="hub-link" href="/#">
                 {createIcon(faGithub)}
             </a>
             <ul id="nav-list">{navItems}</ul>
