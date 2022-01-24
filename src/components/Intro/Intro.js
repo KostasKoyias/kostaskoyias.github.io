@@ -1,6 +1,8 @@
-import { interests, birthday, alertMsg, focus } from './config.js'
-import { getAge, Spinner } from '../utils.js'
-import { githubUser, githubHeaders } from '../config.js'
+import React from 'react'
+import { interests, birthday, alertMsg, focus } from './config'
+import { getAge, createIcon, Spinner } from '../utils'
+import { githubUser, githubHeaders } from '../config'
+import { faBuilding, faMapMarkerAlt, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 class Intro extends React.Component {
     constructor() {
@@ -10,9 +12,9 @@ class Intro extends React.Component {
             isCallDone: false,
             avatar: null,
             details: {
-                "bio": { alias: "position", icon: "fas fa-briefcase" },
-                "company": { icon: "fas fa-building" },
-                "location": { icon: "fas fa-map-marker-alt" }
+                "bio": { alias: "position", icon: faBriefcase },
+                "company": { icon: faBuilding },
+                "location": { icon: faMapMarkerAlt }
             }
         }
     }
@@ -37,7 +39,7 @@ class Intro extends React.Component {
             let actualKey = value.alias || key
             status.push(
                 <li key={actualKey} className="nav-item">
-                    <i className={value.icon} />
+                    {createIcon(value.icon)}
                     <span className="underline">
                         {actualKey.capitalize()}
                         {": " + data[key]}
@@ -64,9 +66,9 @@ class Intro extends React.Component {
     render() {
 
         return <div id="intro" className="card">
-            {this.state.avatar && <img src={this.state.avatar} alt="picture" />}
+            {this.state.avatar && <img src={this.state.avatar} alt="me" />}
             <div className="card-body">
-                <h5 className="card-title">About myself</h5>
+                <h5 className="card-title">About me</h5>
                 <div className="card-text">
                     <div id="personal-info">
                         {"My name is Konstantinos Koyias & I am " + getAge(birthday) + " years old."}<br />

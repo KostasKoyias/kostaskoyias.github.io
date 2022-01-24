@@ -1,5 +1,6 @@
-import { hosts, topics } from './config.js'
-
+import React from 'react'
+import {hosts, topics} from './config'
+import { createIcon } from '../utils';
 
 /* Hosts NavBar */
 function makeHosts() {
@@ -11,16 +12,15 @@ function makeHosts() {
 }
 
 function makeIcon(host, index) {
-    const className = host.icon + " host-icon " + (index !== this.state.host ? "inactive" : "active")
+    const className = "host-icon " + (index !== this.state.host ? "inactive" : "active")
     const props = {
-        title: host.icon.split("-")[1],
-        "data-index": index,
         className: className,
         key: index,
-        onClick: this.switchHost.bind(this)
+        size: "lg",
+        onClick: () => this.switchHost.bind(this)(index)
     }
 
-    return <i {...props} />
+    return createIcon(host.icon, props)
 }
 
 /* Topics NavBar */
@@ -38,10 +38,11 @@ function makeTopics() {
 function makeTopic(project, index) {
     const isMainTopic = index === this.state.topic
     const className = "topic " + (isMainTopic ? "active" : "inactive")
+    const icon = topics[project.key].icon
 
     return <li key={index} className={className} onClick={_ => this.setState({ topic: index })}>
         {project.key}
-        {<i key={index} className={topics[project.key].icon} />}
+        {icon && createIcon(icon, { size: "lg"})}
     </li>
 }
 

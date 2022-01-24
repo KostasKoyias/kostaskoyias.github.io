@@ -1,5 +1,6 @@
-import { cols } from './config.js'
-import { itemToColumn } from './methods.js'
+import React from 'react'
+import { cols } from './config'
+import { itemToColumn } from './methods'
 
 function Footer() {
 

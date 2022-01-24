@@ -1,4 +1,6 @@
-import { addKey } from '../utils.js'
+import React from 'react'
+import { createIcon } from '../utils'
+
 
 function itemToColumn(col, index) {
     return <div key={index} className={col.pos}>{col.children}</div>
@@ -10,10 +12,10 @@ function itemToAnchorList(link, index) {
     return (
         <li key={index} className="nav-item">
             <a className={className} {...link.props}>
-                <i className={link.icon} />
+                {createIcon(link.icon, { size: "lg"})}
                 {link.msg}
             </a>
         </li>)
 }
 
-export { itemToColumn, addKey, itemToAnchorList }
+export { itemToColumn, itemToAnchorList }

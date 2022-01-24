@@ -1,7 +1,9 @@
-import { Spinner } from '../utils.js'
-import { hosts, alertMsg } from './config.js'
-import { makeProjects } from './methods.js'
-import { makeHosts, makeTopics } from './options.js'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Spinner } from '../utils'
+import { hosts, alertMsg } from './config'
+import { makeProjects } from './methods'
+import { makeHosts, makeTopics } from './options'
 
 
 class Work extends React.Component {
@@ -24,15 +26,15 @@ class Work extends React.Component {
     fetch(url, { headers })
       .then(httpResponse => httpResponse.json())
       .then(data => this.updateProjects.bind(this)(data, index))
-      .catch(error => { this.setState({ alert: true, projects: true }); console.error(error) })
+      .catch(error => {
+        this.setState({ alert: true, projects: true })
+        console.error(error)
+      })
   }
 
-  switchHost(event) {
-    const index = event.target.dataset.index
-    if (!hosts[index].projects)
-      this.setState({ projects: false, topic: 0 }, _ => this.callAPI(index))
-    else
-      this.setState({ projects: hosts[index].projects, host: index, topic: 0 })
+  switchHost(index) {
+    const newState = {projects: hosts[index].projects, topic: 0, host: index}
+    this.setState(newState, !newState.projects ? _ => this.callAPI(index) : null)
   }
 
   updateProjects(data, index) {

@@ -1,12 +1,15 @@
-import { addKey, itemToAnchorList } from './methods.js'
+import { itemToAnchorList } from './methods'
+import { addKey, createIcon } from "../utils";
+import { faLinkedin, faFacebook, faInstagram, faYoutubeSquare, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faFileAlt, faPhoneSquare, faAt } from "@fortawesome/free-solid-svg-icons";
 
 const url = {
-    mail: <span>konstantinos.kogias97<i className="fas fa-at" />gmail.com</span>,
+    mail: <span>konstantinos.kogias97{createIcon(faAt)}gmail.com</span>,
     phone: "+30 6970307088", github: "https://github.com/KostasKoyias",
     linkedIn: "https://www.linkedin.com/in/kostas-koyias-687269175/", fb: "https://www.facebook.com/kostaskoyias",
     uTube: "https://www.youtube.com/channel/UC-Bg1WdBrEKL4B9TIjh7QZw?app=desktop",
     instagram: "https://www.instagram.com/kostas_koyias/?hl=en",
-    cv: "../docs/CV.pdf"
+    cv: "docs/CV.pdf"
 }
 
 const messages = [
@@ -35,10 +38,10 @@ const cols = [
             // links
             <ul>{
                 [
-                    { icon: "fab fa-github-square", msg: "github", props: { href: url.github, target: "_blank" } },
-                    { icon: "fab fa-linkedin", msg: "linkedIn", props: { href: url.linkedIn, target: "_blank" } },
-                    { icon: "fas fa-envelope", msg: url.mail, props: { href: "#footer", className: "dead-anchor" } },
-                    { icon: "fas fa-file-alt", msg: " Resume", props: { href: url.cv, target: "_blank" } }
+                    { icon: faGithubSquare, msg: "github", props: { href: url.github, target: "_blank" } },
+                    { icon: faLinkedin, msg: "linkedIn", props: { href: url.linkedIn, target: "_blank" } },
+                    { icon: faEnvelope, msg: url.mail, props: { href: "#footer", className: "dead-anchor" } },
+                    { icon: faFileAlt, msg: " Resume", props: { href: url.cv, target: "_blank" } }
                 ].map(itemToAnchorList)}
             </ul>
         ].map(addKey)
@@ -52,10 +55,10 @@ const cols = [
             // links
             <ul>
                 {[
-                    { icon: "fab fa-facebook", msg: "facebook", props: { href: url.fb, target: "_blank" } },
-                    { icon: "fab fa-youtube-square", msg: "youtube", props: { href: url.uTube, target: "_blank" } },
-                    { icon: "fas fa-phone-square", msg: url.phone, props: { href: "#footer", className: "dead-anchor" } },
-                    { icon: "fab fa-instagram", msg: "instagram", props: { href: url.instagram, target: "_blank" } }
+                    { icon: faFacebook, msg: "facebook", props: { href: url.fb, target: "_blank" } },
+                    { icon: faYoutubeSquare, msg: "youtube", props: { href: url.uTube, target: "_blank" } },
+                    { icon: faPhoneSquare, msg: url.phone, props: { href: "#footer", className: "dead-anchor" } },
+                    { icon: faInstagram, msg: "instagram", props: { href: url.instagram, target: "_blank" } }
                 ].map(itemToAnchorList)}
             </ul>
         ].map(addKey)

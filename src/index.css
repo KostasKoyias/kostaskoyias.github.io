@@ -21,8 +21,8 @@ hr {
     color: lightgray;
 }
 
-#hub-link i {
-    font-size: 2.5rem;
+#hub-link > svg {
+    font-size: 2.5em;
 }
 
 #nav-list {
@@ -182,7 +182,7 @@ span.underline {
     border: 1px solid #343a40;
 }
 
-.card-title i {
+.card-title svg {
     float: right !important;
 }
 
@@ -199,8 +199,7 @@ span.underline {
     padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
-.topic i {
-    font-size: x-large;
+.topic > svg {
     padding-left: .5rem;
 }
 
@@ -214,11 +213,6 @@ span.underline {
 }
 
 /* @Override */
-
-.fa-linux {
-    font-size: xx-large !important;
-}
-
 .fa-d-and-d {
     font-size: xx-large !important;
 }
@@ -240,8 +234,9 @@ footer ul, #work ul {
     padding: 0;
 }
 
-footer ul i {
+footer li > a > svg {
     padding-right: .4rem;
+    font-size: 1.5em !important;
 }
 
 footer ul a {

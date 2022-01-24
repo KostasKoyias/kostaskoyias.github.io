@@ -1,3 +1,6 @@
+import React from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+
 const addKey = ((item, index) => { return { ...item, key: index } })
 
 String.prototype.capitalize = function () {
@@ -7,6 +10,10 @@ String.prototype.capitalize = function () {
 function getAge(birthday) {
     const present = new Date(), birthDate = new Date(birthday)
     return new Date(new Date(present.getTime() - birthDate.getTime())).getUTCFullYear() - 1970
+}
+
+function createIcon(iconDefinition, props) {
+    return <FontAwesomeIcon icon={iconDefinition} {...props} />;
 }
 
 // a simple loading spinner
@@ -34,4 +41,4 @@ function Card(props) {
     </div>)
 }
 
-export { getAge, addKey, Spinner, Card }
+export { getAge, addKey, createIcon, Spinner, Card }

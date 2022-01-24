@@ -1,4 +1,7 @@
-import { items } from './config.js'
+import React from 'react'
+import { items } from './config'
+import { faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
+import { createIcon } from "../utils";
 
 function Nav() {
 
@@ -11,7 +14,7 @@ function Nav() {
     return (
         <nav className="navbar navbar-dark bg-dark">
             <a id="hub-link" href="#">
-                <i className="fab fa-github" />
+                {createIcon(faGithub)}
             </a>
             <ul id="nav-list">{navItems}</ul>
         </nav>

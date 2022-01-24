@@ -1,5 +1,7 @@
-import { Card } from '../utils.js'
-import { grid, topics, blacklist } from './config.js'
+import React from 'react'
+import { createIcon, Card } from '../utils'
+import { grid, topics, blacklist } from './config'
+import {faGlobe, faStar} from "@fortawesome/free-solid-svg-icons";
 
 /**
  * @param {{
@@ -19,13 +21,12 @@ import { grid, topics, blacklist } from './config.js'
 function isThisRepo(repo) { return window.location.hostname === repo.name }
 function makeTitle(repo) {
     const name = <span key={0}>{repo.name}</span>
+    const icon = isThisRepo(repo) ?
+        faGlobe
+        :
+        repo.watchers > 0 && faStar;
 
-    if (isThisRepo(repo))
-        return [name, <i key={1} className="fas fa-globe" />]
-    else if (repo.watchers > 0)
-        return [name, <i key={1} className="far fa-star" />]
-    else
-        return [name]
+    return [name, icon && createIcon(icon, {key: 1})]
 }
 
 // given a detailed repository description
