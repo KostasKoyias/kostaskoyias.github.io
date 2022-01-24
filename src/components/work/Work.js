@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Spinner } from '../utils'
+import Spinner from '../Spinner'
 import { alertMsg, hosts } from './config'
 import { makeProjects } from './methods'
 import { makeHosts, makeTopics } from './options'
@@ -52,7 +52,8 @@ class Work extends React.Component {
 			<div id="work">
 				{header}
 				{!projects ?
-					Spinner('dark') :
+					<Spinner type='dark' />
+					:
 					alert ?
 						<div className="alert alert-warning">{alertMsg}</div>
 						:

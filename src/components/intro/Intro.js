@@ -1,21 +1,23 @@
 import React from 'react'
-import { alertMsg, birthday, focus, interests } from './config'
-import { createIcon, getAge, Spinner } from '../utils'
+import { alertMsg } from './config'
+import Spinner from '../Spinner'
+import Status from './Status'
+import Bio from './Bio'
 import { githubHeaders, githubUser } from '../config'
 import { faBriefcase, faBuilding, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 class Intro extends React.Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.state = {
 			alert: false,
 			isCallDone: false,
 			avatar: null,
-			details: {
-				'bio': { alias: 'position', icon: faBriefcase },
-				'company': { icon: faBuilding },
-				'location': { icon: faMapMarkerAlt }
-			}
+			details: [
+				{ key: 'bio', alias: 'position', icon: faBriefcase },
+				{ key: 'company', icon: faBuilding },
+				{ key: 'location', icon: faMapMarkerAlt }
+			]
 		}
 	}
 
@@ -27,79 +29,36 @@ class Intro extends React.Component {
 				this.setState({ alert: true })
 				console.error(error)
 			})
+			.finally(() => this.setState({ isCallDone: true }))
 	}
 
 	onMount(data) {
-		let status = []
-		/**
-		 * @param {{alias: string, icon: string!}} value
-		 */
-		for (const [key, value] of Object.entries(this.state.details)) {
-			if (!data[key]) { // omit missing status properties
-				continue
+		const details = []
+		this.state.details.forEach(detail => {
+			if (data[detail.key]) { // omit missing status properties
+				details.push({ ...detail, value: data[detail.key] })
 			}
-
-			let actualKey = value.alias || key
-			status.push(
-				<li key={actualKey} className="nav-item">
-					{createIcon(value.icon)}
-					<span className="status-key">
-						{actualKey}
-					</span>
-					{':'}
-					<span>{data[key]}</span>
-				</li>
-			)
-		}
+		})
 
 		this.setState({
 			avatar: data['avatar_url'],
-			isCallDone: true,
-			status:
-				status.length ?
-					<div id="status">
-						<br/>
-						<h5 className="card-title">Current Status</h5>
-						{status}
-					</div>
-					:
-					null
+			details
 		})
 	}
 
 	render() {
-
 		return <div id="intro" className="card">
 			{this.state.avatar && <img src={this.state.avatar} alt="me"/>}
 			<div className="card-body">
 				<h5 className="card-title">About me</h5>
-				<div className="card-text">
-					<div id="personal-info">
-						{'My name is Konstantinos Koyias & I am ' + getAge(birthday) + ' years old.'}<br/>
-						{'Obtained a B.Sc in Informatics and Telecommunications at '}
-						<a href="https://www.di.uoa.gr/eng" target="_blank" rel="noreferrer">DiT UoA</a>
-						{' in September 2020'}
-						<br/>
-						{'concentrated in Data & Knowledge Management as well as Software Engineering.'},
-						<div id="specialization">
-							<br/>
-							{focus}
-						</div>
-						<div id="interests">
-							<br/>I am also interested in
-							<ul id="passion">
-								{interests.map((inst, i) => <li key={i}>{inst}</li>)}
-							</ul>
-						</div>
-					</div>
-				</div>
+				<Bio />
 				{this.state.isCallDone ?
 					this.state.alert ?
 						<div className="alert alert-warning">{alertMsg}</div>
 						:
-						this.state.status
+						<Status details={this.state.details} />
 					:
-					Spinner('dark')}
+					<Spinner type='dark' />}
 			</div>
 		</div>
 	}

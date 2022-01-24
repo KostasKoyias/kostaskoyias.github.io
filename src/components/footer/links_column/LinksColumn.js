@@ -1,10 +1,9 @@
 import React from 'react'
 import AccountLink from './account_link/AccountLink'
-import { addKey } from '../../utils'
 import PropTypes from 'prop-types'
 
 function LinksColumn({ pos, header, links }) {
-	const accountLinks = links.map(AccountLink).map(addKey)
+	const accountLinks = links.map(AccountLink)
 
 	return (
 		<div className={pos}>
@@ -15,9 +14,9 @@ function LinksColumn({ pos, header, links }) {
 }
 
 LinksColumn.propTypes = {
-	pos: PropTypes.string,
-	header: PropTypes.string,
-	links: PropTypes.arrayOf(PropTypes.object)
+	pos: PropTypes.string.isRequired,
+	header: PropTypes.string.isRequired,
+	links: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default LinksColumn

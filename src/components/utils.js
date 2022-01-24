@@ -10,9 +10,4 @@ const getAge = (birthday) => {
 
 const createIcon = (iconDefinition, props) => <FontAwesomeIcon icon={iconDefinition} {...props} />
 
-// a simple loading spinner
-function Spinner(type) {
-	return <div className={'spinner-border text-' + type} role="status" />
-}
-
-export { getAge, addKey, createIcon, Spinner }
+export { getAge, addKey, createIcon }

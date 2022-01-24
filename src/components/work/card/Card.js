@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// create a Card Component with title, description, an unordered list of properties and a list of links
 function Card(props) {
 	const { key, title, description, avatarUrl, urls, ...rest } = props
 	const maxDescription = 200, croppedDescription = description.slice(0, maxDescription) + '...'
@@ -22,11 +21,11 @@ function Card(props) {
 }
 
 Card.propTypes = {
-	key: PropTypes.string,
-	title: PropTypes.string,
-	description: PropTypes.string,
+	key: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired,
 	avatarUrl: PropTypes.string,
-	urls: PropTypes.arrayOf(PropTypes.string)
+	urls: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default Card
