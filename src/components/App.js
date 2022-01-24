@@ -1,8 +1,8 @@
 import React from 'react'
-import Nav from './Nav/Nav'
-import Intro from './Intro/Intro'
-import Work from './Work/Work'
-import Footer from './Footer/Footer'
+import Nav from './nav/Nav'
+import Intro from './intro/Intro'
+import Work from './work/Work'
+import Footer from './footer/Footer'
 
 function App() {
   return (

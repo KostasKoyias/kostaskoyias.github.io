@@ -1,5 +1,6 @@
 import React from 'react'
-import { createIcon, Card } from '../utils'
+import { createIcon } from '../utils'
+import Card from '../card/Card'
 import { grid, topics, blacklist } from './config'
 import {faGlobe, faStar} from "@fortawesome/free-solid-svg-icons";
 
