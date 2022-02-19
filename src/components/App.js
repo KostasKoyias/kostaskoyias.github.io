@@ -4,14 +4,12 @@ import Intro from './intro/Intro'
 import Work from './work/Work'
 import Footer from './footer/Footer'
 
-function App() {
-	return (
-		<div>
-			<Nav />
-			<Intro id="about" />
-			<Work id="work" />
-			<Footer id="contact" />
-		</div>)
-}
+const App = () => (
+	<div>
+		<Nav />
+		<Intro id="about" />
+		<Work id="work" />
+		<Footer id="contact" />
+	</div>)
 
 export default App

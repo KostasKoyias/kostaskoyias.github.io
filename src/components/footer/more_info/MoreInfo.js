@@ -6,14 +6,12 @@ const messages = [
 	'For any work-related offers or issues, one can contact me via e-mail, phone or facebook'
 ]
 
-function MoreInfo() {
-	return (
-		<div className="col-md-6">
-			<h3 className="h-beautify">More Info</h3>
-			<p>Use those links to check out all my web-accounts!</p>
-			<ul>{messages.map((m, i) => <li key={i}>{m}</li>)}</ul>
-		</div>
-	)
-}
+const MoreInfo = () => (
+	<div className="col-md-6">
+		<h3 className="h-beautify">More Info</h3>
+		<p>Use those links to check out all my web-accounts!</p>
+		<ul>{messages.map((m, i) => <li key={i}>{m}</li>)}</ul>
+	</div>
+)
 
 export default MoreInfo

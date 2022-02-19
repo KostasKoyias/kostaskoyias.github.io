@@ -1,67 +1,77 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Spinner from '../Spinner'
 import { alertMsg, hosts } from './config'
-import { makeProjects } from './methods'
-import { makeHosts, makeTopics } from './options'
+import HostsBar from './hosts/HostsBar'
+import Projects from './projects/Projects'
+import Alert from '../Alert'
 
 
 class Work extends React.Component {
-	constructor() {
-		super()
-		this.state = { alert: false, projects: false, topic: 0, host: 0 }
+	constructor(props) {
+		super(props)
+		this.state = {
+			alert: false,
+			loading: false,
+			repos: [],
+			selectedHostId: 'github',
+			hosts: hosts
+		}
 		this.switchHost = this.switchHost.bind(this)
-		this.updateProjects = this.updateProjects.bind(this)
+		this.updateHost = this.updateHost.bind(this)
 	}
 
 	componentDidMount() {
 		// hide alert on click
-		// eslint-disable-next-line react/no-find-dom-node
-		ReactDOM.findDOMNode(this).addEventListener('click', () => this.setState({ alert: false }))
-		this.callAPI(this.state.host)
+		this.callAPI(this.state.selectedHostId)
 	}
 
-	callAPI(host) {
-		const { url, headers } = hosts[host]
+	callAPI(hostId) {
+		const { url, headers } = this.findHost(hostId)
+		this.setState({ loading: true })
 
 		fetch(url, { headers })
 			.then(httpResponse => httpResponse.json())
-			.then(data => this.updateProjects(data, host))
+			.then(data => this.updateHost(data, hostId))
 			.catch(error => {
-				this.setState({ alert: true, projects: true })
+				this.setState({ alert: true })
 				console.error(error)
 			})
+			.finally(() => this.setState({ loading: false }))
 	}
 
-	switchHost(host) {
-		const newState = { projects: hosts[host].projects, topic: 0, host: host }
-		this.setState(newState, !newState.projects ? () => this.callAPI(host) : null)
+	findHost(hostId) {
+		return this.state.hosts.find(({ id }) => id === hostId)
 	}
 
-	updateProjects(data, host) {
-		const projects = makeProjects(data)
-		hosts[host].projects = projects
-		this.setState({ projects, host })
+	updateHost(data, hostId) {
+		const repos = Array.isArray(data) ? data : data.values
+		this.setState(({ hosts }) => ({
+			repos,
+			selectedHostId: hostId,
+			hosts: hosts.map((host) => host.id === hostId ? { ...host, repos } : host)
+		}))
 	}
+
+	switchHost(hostId) {
+		const newHostCachedRepos =  this.findHost(hostId).repos
+		const newState = { ...(newHostCachedRepos && { repos: newHostCachedRepos }), selectedHostId: hostId }
+		this.setState(newState, !newHostCachedRepos ? () => this.callAPI(hostId) : null)
+	}
+
 
 	render() {
-		const { alert, projects, topic, host } = this.state
-		const header = makeHosts(host, this.switchHost)
+		const { alert, repos, selectedHostId, hosts, loading } = this.state
 
 		return (
 			<div id="work">
-				{header}
-				{!projects ?
+				<HostsBar hosts={hosts} selectedHostId={selectedHostId} selectHostCallback={this.switchHost} />
+				{loading ?
 					<Spinner type='dark' />
 					:
 					alert ?
-						<div className="alert alert-warning">{alertMsg}</div>
+						<Alert type={'warning'} message={alertMsg} onClose={() => this.setState({ alert: false })}/>
 						:
-						topic < projects.length &&
-						<div id="projects">
-							{projects.length > 1 && makeTopics(projects, topic, (topic) => this.setState({ topic }))}
-							{projects[topic].body}
-						</div>
+						<Projects repos={repos} />
 				}
 			</div>)
 	}

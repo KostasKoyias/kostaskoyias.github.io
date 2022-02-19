@@ -5,6 +5,7 @@ import Status from './Status'
 import Bio from './Bio'
 import { githubHeaders, githubUser } from '../config'
 import { faBriefcase, faBuilding, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import Alert from '../Alert'
 
 class Intro extends React.Component {
 	constructor(props) {
@@ -54,7 +55,7 @@ class Intro extends React.Component {
 				<Bio />
 				{this.state.isCallDone ?
 					this.state.alert ?
-						<div className="alert alert-warning">{alertMsg}</div>
+						<Alert type={'warning'} message={alertMsg} onClose={() => this.setState({ alert: false })} />
 						:
 						<Status details={this.state.details} />
 					:

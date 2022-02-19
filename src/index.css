@@ -191,6 +191,10 @@ span.bold {
     z-index: 0 !important;
 }
 
+#topics li {
+    display: inline;
+}
+
 .topic {
     display: inline;
     cursor: pointer;

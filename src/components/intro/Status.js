@@ -11,7 +11,7 @@ import { createIcon } from '../utils'
 	  value: string,
 	}]}} props
  */
-function Status(props) {
+const Status = (props) => {
 	const { details } = props
 	return (
 		<div id="status">

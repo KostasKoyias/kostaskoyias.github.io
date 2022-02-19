@@ -2,7 +2,7 @@ import React from 'react'
 import AccountLink from './account_link/AccountLink'
 import PropTypes from 'prop-types'
 
-function LinksColumn({ pos, header, links }) {
+const LinksColumn = ({ pos, header, links }) => {
 	const accountLinks = links.map(AccountLink)
 
 	return (
