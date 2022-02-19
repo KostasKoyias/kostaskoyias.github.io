@@ -2,7 +2,7 @@ import { blacklist } from '../config'
 
 
 // returns a Map<topicId, repo[]>
-const groupReposByTopic = (repos, topics) => {
+export const groupReposByTopic = (repos, topics) => {
 	const importantRepos = repos.filter(r => !blacklist.some(b => r.name.endsWith(b)))
 
 	// classify repos, assigning each to the appropriate topic list
@@ -27,5 +27,3 @@ const findTopic = (repo, topics) => {
 
 	return 'other'
 }
-
-export { groupReposByTopic }

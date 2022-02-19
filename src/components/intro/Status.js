@@ -35,13 +35,15 @@ const Status = (props) => {
 	)
 }
 
+export const detailShape = PropTypes.shape({
+	key: PropTypes.string.isRequired,
+	alias: PropTypes.string,
+	icon: PropTypes.object.isRequired,
+	value: PropTypes.string.isRequired
+})
+
 Status.propTypes = {
-	details: PropTypes.arrayOf(PropTypes.shape({
-		key: PropTypes.string.isRequired,
-		alias: PropTypes.string,
-		icon: PropTypes.object.isRequired,
-		value: PropTypes.string.isRequired
-	}))
+	details: PropTypes.arrayOf(detailShape)
 }
 
 export default Status

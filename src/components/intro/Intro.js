@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { alertMsg } from './config'
 import Spinner from '../Spinner'
 import Status from './Status'
@@ -6,63 +6,60 @@ import Bio from './Bio'
 import { githubHeaders, githubUser } from '../config'
 import { faBriefcase, faBuilding, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import Alert from '../Alert'
+import { updateState } from '../utils'
 
-class Intro extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			alert: false,
-			isCallDone: false,
-			avatar: null,
-			details: [
-				{ key: 'bio', alias: 'position', icon: faBriefcase },
-				{ key: 'company', icon: faBuilding },
-				{ key: 'location', icon: faMapMarkerAlt }
-			]
-		}
-	}
+const Intro = () => {
+	const [state, setState] = useState({
+		alert: false,
+		isCallDone: false,
+		avatar: null,
+		details: [
+			{ key: 'bio', alias: 'position', icon: faBriefcase },
+			{ key: 'company', icon: faBuilding },
+			{ key: 'location', icon: faMapMarkerAlt }
+		]
+	})
 
-	componentDidMount() {
+	useEffect(() => {
 		fetch(githubUser, { headers: githubHeaders })
 			.then(httpResponse => httpResponse.json())
-			.then(d => this.onMount(d))
+			.then(d => onMount(d))
 			.catch(error => {
-				this.setState({ alert: true })
+				updateState(setState, { alert: true })
 				console.error(error)
 			})
-			.finally(() => this.setState({ isCallDone: true }))
-	}
+			.finally(() => updateState(setState, { isCallDone: true }))
+	}, [])
 
-	onMount(data) {
+	const onMount = (data) => {
 		const details = []
-		this.state.details.forEach(detail => {
+		state.details.forEach(detail => {
 			if (data[detail.key]) { // omit missing status properties
 				details.push({ ...detail, value: data[detail.key] })
 			}
 		})
 
-		this.setState({
+		updateState(setState, {
 			avatar: data['avatar_url'],
 			details
 		})
 	}
 
-	render() {
-		return <div id="intro" className="card">
-			{this.state.avatar && <img src={this.state.avatar} alt="me"/>}
+	return (
+		<div id="intro" className="card">
+			{state.avatar && <img src={state.avatar} alt="me"/>}
 			<div className="card-body">
 				<h5 className="card-title">About me</h5>
 				<Bio />
-				{this.state.isCallDone ?
-					this.state.alert ?
-						<Alert type={'warning'} message={alertMsg} onClose={() => this.setState({ alert: false })} />
+				{state.isCallDone ?
+					state.alert ?
+						<Alert type={'warning'} message={alertMsg} onClose={() => updateState(setState, { alert: false })} />
 						:
-						<Status details={this.state.details} />
+						<Status details={state.details} />
 					:
 					<Spinner type='dark' />}
 			</div>
-		</div>
-	}
+		</div>)
 }
 
 export default Intro
