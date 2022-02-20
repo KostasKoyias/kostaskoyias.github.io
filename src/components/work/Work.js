@@ -12,18 +12,16 @@ const Work = () => {
 		alert: false,
 		loading: false,
 		selectedHostId: 'github',
-		repos: new Map(hostList.map(({ id: hostId }) => [hostId, []])), // cache repos per host
-		hosts: hostList
+		selectedHostRepos: [],
+		hosts: hostList,
 	})
 
 	useEffect( () => {
-		if (!state.repos.get(state.selectedHostId).length) {
-			fetchRepos(state.selectedHostId)
-		}
+		fetchRepos(state.selectedHostId)
 	}, [state.selectedHostId])
 
 	const fetchRepos = (hostId) => {
-		const { url, headers } = findHost(hostId)
+		const { url, headers } = findHostById(hostId)
 		updateState(setState, { loading: true })
 
 		fetch(url, { headers })
@@ -35,19 +33,17 @@ const Work = () => {
 
 	const handleResponse = (data, hostId) => {
 		const hostRepos = Array.isArray(data) ? data : data.values
-		updateState(setState, ({ hosts, repos }) => ({
-			repos: new Map(repos.set(hostId, hostRepos)),
+		updateState(setState, {
+			selectedHostRepos: hostRepos,
 			selectedHostId: hostId,
-			hosts: hosts.map((host) => host.id === hostId ? { ...host, repos } : host)
-		}))
+		})
 	}
 
-	const findHost = (hostId) => state.hosts.find(({ id }) => id === hostId)
+	const findHostById = (hostId) => state.hosts.find(({ id }) => id === hostId)
 
 	const switchHost =(hostId) => updateState(setState, { selectedHostId: hostId })
 
-	const { alert, selectedHostId, hosts, loading, repos } = state
-	const hostRepos = repos.get(selectedHostId)
+	const { alert, loading, selectedHostId, selectedHostRepos, hosts } = state
 
 	return (
 		<div id="work">
@@ -58,7 +54,7 @@ const Work = () => {
 				alert ?
 					<Alert type={'warning'} message={alertMsg} onClose={() => updateState(setState, { alert: false })}/>
 					:
-					<Projects repos={hostRepos} />
+					<Projects repos={selectedHostRepos} />
 			}
 		</div>)
 }
