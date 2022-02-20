@@ -17,7 +17,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint src"
+    "eslint-check": "eslint-config-prettier .eslintrc.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "prettier:check": "prettier --check './**/*.{js,jsx,ts,tsx,css,md,json}'"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +43,9 @@
   },
   "devDependencies": {
     "eslint": "^8.3.0",
-    "eslint-plugin-react": "^7.28.0"
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "prettier": "^2.5.1"
   }
 }

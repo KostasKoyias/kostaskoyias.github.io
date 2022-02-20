@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { createIcon } from '../utils'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { createIcon } from '../utils';
 
 /**
  * @param {{
@@ -12,38 +12,37 @@ import { createIcon } from '../utils'
 	}]}} props
  */
 const Status = (props) => {
-	const { details } = props
-	return (
-		<div id="status">
-			<br/>
-			<h5 className="card-title">Current Status</h5>
-			<ul>
-				{details.map(detail => {
-					const actualKey = detail.alias || detail.key
-					return (
-						<li key={actualKey} className="nav-item">
-							{createIcon(detail.icon)}
-							<span className="status-key">
-								{actualKey}
-							</span>
-							{':'}
-							<span>{detail.value}</span>
-						</li>
-					)})}
-			</ul>
-		</div>
-	)
-}
+  const { details } = props;
+  return (
+    <div id='status'>
+      <br />
+      <h5 className='card-title'>Current Status</h5>
+      <ul>
+        {details.map((detail) => {
+          const actualKey = detail.alias || detail.key;
+          return (
+            <li key={actualKey} className='nav-item'>
+              {createIcon(detail.icon)}
+              <span className='status-key'>{actualKey}</span>
+              {':'}
+              <span>{detail.value}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
 export const detailShape = PropTypes.shape({
-	key: PropTypes.string.isRequired,
-	alias: PropTypes.string,
-	icon: PropTypes.object.isRequired,
-	value: PropTypes.string.isRequired
-})
+  key: PropTypes.string.isRequired,
+  alias: PropTypes.string,
+  icon: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
+});
 
 Status.propTypes = {
-	details: PropTypes.arrayOf(detailShape)
-}
+  details: PropTypes.arrayOf(detailShape),
+};
 
-export default Status
+export default Status;

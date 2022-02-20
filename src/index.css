@@ -1,298 +1,292 @@
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 hr {
-    color: snow;
+  color: snow;
 }
 
 /* NavBar */
 
 .navbar {
-    padding: 0 !important;
-    position: sticky !important;
-    top: 0 !important;
-    width: 100% !important;
-    z-index: 1;
+  padding: 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  width: 100% !important;
+  z-index: 1;
 }
 
 #hub-link {
-    padding-left: 4.5rem;
-    color: lightgray;
+  padding-left: 4.5rem;
+  color: lightgray;
 }
 
 #hub-link > svg {
-    font-size: 2.5em;
+  font-size: 2.5em;
 }
 
 #nav-list {
-    text-align: right;
-    display: inherit;
-    padding-right: 2.5rem;
+  text-align: right;
+  display: inherit;
+  padding-right: 2.5rem;
 }
 
-.nav-item, #work li {
-    list-style-type: none;
+.nav-item,
+#work li {
+  list-style-type: none;
 }
 
 .nav-link {
-    color: lightgray;
-    margin-top: .75rem;
+  color: lightgray;
+  margin-top: 0.75rem;
 }
 
-.nav-link:hover, .nav-link[data-on="true"] {
-    color: white;
-    font-weight: 500;
-}
-
-#avatar {
-    margin: 0 2rem;
-    width: 12%;
-    cursor: pointer;
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: .3rem;
+.nav-link:hover,
+.nav-link[data-on='true'] {
+  color: white;
+  font-weight: 500;
 }
 
 /* Intro */
 
 #root {
-    background: rgb(208, 208, 238) no-repeat center;
-    background-size: cover;
+  background: rgb(208, 208, 238) no-repeat center;
+  background-size: cover;
 }
 
 #intro img {
-    width: 25%;
-    margin: -5rem auto 0 auto;
-    border-radius: 50%;
+  width: 25%;
+  margin: -5rem auto 0 auto;
+  border-radius: 50%;
 }
 
 #intro ul {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 #intro {
-    width: 45%;
-    margin: 7rem auto 4rem auto;
+  width: 45%;
+  margin: 7rem auto 4rem auto;
 }
 
 /* Work */
 
 #projects {
-    margin: 1.5rem 0 5rem 0;
-    min-height: 25rem;
+  margin: 1.5rem 0 5rem 0;
+  min-height: 25rem;
 }
 
 #work h1:first-of-type {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 #work .card {
-    height: 90%;
-    margin-bottom: 1.5rem !important;
+  height: 90%;
+  margin-bottom: 1.5rem !important;
 }
 
 #work .card .card-title {
-    background-color: #343a40 !important;
-    color: snow;
-    font-weight: 350;
+  background-color: #343a40 !important;
+  color: snow;
+  font-weight: 350;
 }
 
 .card {
-    margin: 0.5rem auto auto auto;
-    text-align: left !important;
+  margin: 0.5rem auto auto auto;
+  text-align: left !important;
 }
 
 .card-title {
-    text-align: left;
+  text-align: left;
 }
 
 #work {
-    min-height: 100%;
-    text-align: center;
-    margin: 0 7rem;
+  min-height: 100%;
+  text-align: center;
+  margin: 0 7rem;
 }
 
 #work-body {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 #work .spinner-border {
-    margin: 2rem;
+  margin: 2rem;
 }
 
 #work ul {
-    padding-top: .5rem;
+  padding-top: 0.5rem;
 }
 
 span.bold {
-    font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .status-key {
-    text-decoration: underline;
-    text-transform: capitalize;
+  text-decoration: underline;
+  text-transform: capitalize;
 }
 
 .nav-item span {
-    padding-left: .5rem
+  padding-left: 0.5rem;
 }
 
 .card-title span {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }
 
 .card-title {
-    padding: .5rem !important;
+  padding: 0.5rem !important;
 }
 
 .card-body {
-    padding: 0 1.25rem 1.25rem 1.25rem !important;
+  padding: 0 1.25rem 1.25rem 1.25rem !important;
 }
 
 .card-link {
-    position: absolute;
-    bottom: 0;
-    display: block;
+  position: absolute;
+  bottom: 0;
+  display: block;
 }
 
 .card-logo {
-    border-radius: 10px;
-    float: right;
-    height: 2rem;
+  border-radius: 10px;
+  float: right;
+  height: 2rem;
 }
 
 .h-beautify {
-    font-weight: 400;
-    font-size: 1.5rem;
-    line-height: 1.2;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
 }
 
 #work h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #work .row {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 #work .alert {
-    color: #4d4949;
-    width: 50%;
-    margin: auto;
-    border: 1px solid #343a40;
+  color: #4d4949;
+  width: 50%;
+  margin: auto;
+  border: 1px solid #343a40;
 }
 
 .card-title svg {
-    float: right !important;
+  float: right !important;
 }
 
 #topics {
-    z-index: 0 !important;
+  z-index: 0 !important;
 }
 
 #topics li {
-    display: inline;
+  display: inline;
 }
 
 .topic {
-    display: inline;
-    cursor: pointer;
-    font-size: xx-large;
-    font-weight: 300;
-    text-align: left;
-    padding: 1.5rem 1.5rem 0 1.5rem;
+  display: inline;
+  cursor: pointer;
+  font-size: xx-large;
+  font-weight: 300;
+  text-align: left;
+  padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
 .topic > svg {
-    padding-left: .5rem;
+  padding-left: 0.5rem;
 }
 
 .topic.active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .host-icon {
-    padding: 0 0.5rem !important;
-    cursor: pointer;
+  padding: 0 0.5rem !important;
+  cursor: pointer;
 }
 
 /* @Override */
 .fa-d-and-d {
-    font-size: xx-large !important;
+  font-size: xx-large !important;
 }
 
 /* Footer */
 
 footer {
-    margin-top: 2rem;
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #343a40;
-    color: white;
-    text-align: center;
+  margin-top: 2rem;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  text-align: center;
 }
 
-footer ul, #work ul {
-    padding: 0;
+footer ul,
+#work ul {
+  padding: 0;
 }
 
 footer li > a > svg {
-    padding-right: .4rem;
-    font-size: 1.5em !important;
+  padding-right: 0.4rem;
+  font-size: 1.5em !important;
 }
 
 footer ul a {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 footer p {
-    margin: 0 !important;
-    padding-top: 2rem;
+  margin: 0 !important;
+  padding-top: 2rem;
 }
 
 footer .row div:first-child {
-    padding-left: 5rem;
+  padding-left: 5rem;
 }
 
 .footer-copyright {
-    background-color: #201d1d;
+  background-color: #201d1d;
 }
 
 .footer-copyright a {
-    color: snow;
-    font-weight: bold;
+  color: snow;
+  font-weight: bold;
 }
 
 .footer-copyright a:hover {
-    color: lightgray;
-    text-decoration: underline;
+  color: lightgray;
+  text-decoration: underline;
 }
 
 .dead-anchor {
-    display: block;
-    cursor: default;
-    margin-top: .75rem;
-    color: lightgray !important;
+  display: block;
+  cursor: default;
+  margin-top: 0.75rem;
+  color: lightgray !important;
 }
 
 .dead-anchor:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Active - Inactive */
 
 .inactive {
-    color: grey;
+  color: grey;
 }
 
 .inactive:hover {
-    color: black;
+  color: black;
 }
 
 .active {
-    cursor: default;
-    color: black;
+  cursor: default;
+  color: black;
 }
