@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import { createIcon } from '../../utils';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
-const Topic = ({ topicId, topicIcon, isMainTopic }) => {
+export interface Props {
+  topicId: string;
+  topicIcon?: IconDefinition;
+  isMainTopic: boolean;
+}
+
+const Topic: FC<Props> = ({ topicId, topicIcon, isMainTopic }) => {
   const className = 'topic ' + (isMainTopic ? 'active' : 'inactive');
 
   return (
@@ -11,12 +17,6 @@ const Topic = ({ topicId, topicIcon, isMainTopic }) => {
       {topicIcon && createIcon(topicIcon, { size: 'lg' })}
     </div>
   );
-};
-
-Topic.propTypes = {
-  topicId: PropTypes.string.isRequired,
-  topicIcon: PropTypes.object,
-  isMainTopic: PropTypes.bool.isRequired,
 };
 
 export default Topic;

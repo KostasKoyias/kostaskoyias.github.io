@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import { createIcon } from '../../utils';
+import { Host, HostId } from '../types';
 
-const HostsBar = ({ hosts, selectedHostId, selectHostCallback }) => {
+export interface Props {
+  hosts: Host[];
+  selectedHostId: string;
+  selectHostCallback: (hostId: HostId) => void;
+}
+
+const HostsBar: FC<Props> = ({ hosts, selectedHostId, selectHostCallback }) => {
   // noinspection JSUnusedGlobalSymbols
   const icons = hosts.map(({ id: hostId, icon }) =>
     createIcon(icon, {
@@ -19,12 +25,6 @@ const HostsBar = ({ hosts, selectedHostId, selectHostCallback }) => {
       {icons}
     </h1>
   );
-};
-
-HostsBar.propTypes = {
-  hosts: PropTypes.array.isRequired,
-  selectedHostId: PropTypes.string.isRequired,
-  selectHostCallback: PropTypes.func.isRequired,
 };
 
 export default HostsBar;

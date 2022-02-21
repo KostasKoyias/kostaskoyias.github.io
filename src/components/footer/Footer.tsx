@@ -4,7 +4,7 @@ import LinksColumn from './links_column/LinksColumn';
 import { workLinks, personalLinks } from './config';
 
 const Footer = () => (
-  <footer id='footer' className='page-footer font-small pt-4'>
+  <footer className='page-footer font-small pt-4'>
     <div className='container-fluid text-center text-md-left'>
       <div className='row'>
         <MoreInfo />

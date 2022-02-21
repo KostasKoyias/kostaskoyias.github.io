@@ -69,6 +69,10 @@ hr {
   margin: 7rem auto 4rem auto;
 }
 
+.status-list {
+  padding: 0;
+}
+
 /* Work */
 
 #projects {

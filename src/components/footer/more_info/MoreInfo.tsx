@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 const messages = [
   'Make sure to check out my GitHub account where all  my projects reside',
@@ -6,7 +6,7 @@ const messages = [
   'For any work-related offers or issues, one can contact me via e-mail, phone or facebook',
 ];
 
-const MoreInfo = () => (
+const MoreInfo: FC = () => (
   <div className='col-md-6'>
     <h3 className='h-beautify'>More Info</h3>
     <p>Use those links to check out all my web-accounts!</p>

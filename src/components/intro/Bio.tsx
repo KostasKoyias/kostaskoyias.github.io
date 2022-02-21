@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { getAge } from './helpers';
 import { birthday, focus, interests } from './config';
 
-const Bio = () => {
+const Bio: FC = () => {
   return (
     <div className='card-text'>
       <div id='personal-info'>

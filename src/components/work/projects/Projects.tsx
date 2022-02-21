@@ -1,19 +1,22 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { FC, useEffect, useMemo, useState } from 'react';
 import TopicList from '../topics/TopicList';
 import { topics } from '../config';
-import PropTypes from 'prop-types';
 import { groupReposByTopic } from './helpers';
 import CardGrid from '../card-grid/CardGrid';
+import { Repo } from '../types';
 
-const Projects = (props) => {
-  const { repos } = props;
-  const reposByTopic = useMemo(() => groupReposByTopic(repos, topics), [repos]);
+export interface Props {
+  repos: Repo[];
+}
 
-  const findTopicId = () => (reposByTopic.size ? reposByTopic.keys().next().value : '');
-  const [selectedTopicId, setSelectedTopicId] = useState(findTopicId());
+const Projects: FC<Props> = ({ repos }) => {
+  const reposByTopic: Map<string, Repo[]> = useMemo(() => groupReposByTopic(repos, topics), [repos]);
+
+  const firstTopicId = () => (reposByTopic.size ? reposByTopic.keys().next().value : '');
+  const [selectedTopicId, setSelectedTopicId] = useState(firstTopicId());
 
   useEffect(() => {
-    setSelectedTopicId(findTopicId());
+    setSelectedTopicId(firstTopicId());
   }, [reposByTopic]);
 
   const selectedTopicRepos = reposByTopic.get(selectedTopicId);
@@ -27,10 +30,6 @@ const Projects = (props) => {
       {selectedTopicRepos && <CardGrid repos={selectedTopicRepos} />}
     </div>
   );
-};
-
-Projects.propTypes = {
-  repos: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };
 
 export default Projects;

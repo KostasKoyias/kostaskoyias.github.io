@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import Topic from './Topic';
+import { ProjectTopic } from '../types';
 
-const TopicList = ({ topics, mainTopic, setMainTopic }) => {
+export interface Props {
+  topics: ProjectTopic[];
+  mainTopic: string;
+  setMainTopic: (topicId: string) => void;
+}
+
+const TopicList: FC<Props> = ({ topics, mainTopic, setMainTopic }) => {
   return (
     <nav id='topics'>
       <ul className='nav-list'>
@@ -14,12 +20,6 @@ const TopicList = ({ topics, mainTopic, setMainTopic }) => {
       </ul>
     </nav>
   );
-};
-
-TopicList.propTypes = {
-  topics: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  mainTopic: PropTypes.string.isRequired,
-  setMainTopic: PropTypes.func.isRequired,
 };
 
 export default TopicList;

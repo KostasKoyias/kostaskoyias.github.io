@@ -8,6 +8,7 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faFileAlt, faPhoneSquare, faAt } from '@fortawesome/free-solid-svg-icons';
+import { LinkSection } from './types';
 
 const links = {
   mail: <span>konstantinos.kogias97{createIcon(faAt)}gmail.com</span>,
@@ -20,7 +21,7 @@ const links = {
   cv: 'docs/CV.pdf',
 };
 
-const workLinks = {
+const workLinks: LinkSection = {
   pos: 'col-md-3 offset-md-1',
   header: 'Work',
   links: [

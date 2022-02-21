@@ -5,9 +5,21 @@ import HostsBar from './hosts/HostsBar';
 import Projects from './projects/Projects';
 import Alert from '../Alert';
 import { updateState } from '../utils';
+import { Host, HostId, Repo } from './types';
+import { BitbucketRepos } from '../../types/bitbucket';
+import { GithubRepo } from '../../types/github';
+import { resolveRepos } from './helpers';
+
+export interface State {
+  alert: boolean;
+  loading: boolean;
+  selectedHostId: HostId;
+  selectedHostRepos: Repo[];
+  hosts: Host[];
+}
 
 const Work = () => {
-  const [state, setState] = useState({
+  const [state, setState] = useState<State>({
     alert: false,
     loading: false,
     selectedHostId: 'github',
@@ -19,28 +31,28 @@ const Work = () => {
     fetchRepos(state.selectedHostId);
   }, [state.selectedHostId]);
 
-  const fetchRepos = (hostId) => {
-    const { url, headers } = findHostById(hostId);
+  const fetchRepos = (hostId: HostId) => {
+    const { userUrl, headers } = findHostById(hostId) || state.hosts[0];
     updateState(setState, { loading: true });
 
-    fetch(url, { headers })
+    fetch(userUrl, { headers })
       .then((httpResponse) => httpResponse.json())
-      .then((data) => handleResponse(data, hostId))
+      .then((data) => handleResponse(hostId, data))
       .catch(() => updateState(setState, { alert: true }))
       .finally(() => updateState(setState, { loading: false }));
   };
 
-  const handleResponse = (data, hostId) => {
-    const hostRepos = Array.isArray(data) ? data : data.values;
+  const handleResponse = (hostId: HostId, data: GithubRepo[] | BitbucketRepos) => {
+    const repos = resolveRepos(hostId, data);
     updateState(setState, {
-      selectedHostRepos: hostRepos,
+      selectedHostRepos: repos,
       selectedHostId: hostId,
     });
   };
 
-  const findHostById = (hostId) => state.hosts.find(({ id }) => id === hostId);
+  const findHostById = (hostId: HostId): Host | undefined => state.hosts.find(({ id }) => id === hostId);
 
-  const switchHost = (hostId) => updateState(setState, { selectedHostId: hostId });
+  const switchHost = (hostId: HostId) => updateState(setState, { selectedHostId: hostId });
 
   const { alert, loading, selectedHostId, selectedHostRepos, hosts } = state;
 

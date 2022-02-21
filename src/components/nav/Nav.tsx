@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
 import { createIcon } from '../utils';
 
-const Nav = () => {
+const Nav: FC = () => {
   // create a navbar item for each section
   const items = [
     { title: 'About me', href: '#intro' },
