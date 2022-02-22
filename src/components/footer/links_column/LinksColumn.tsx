@@ -14,9 +14,9 @@ const LinksColumn: FC<Props> = ({ pos, header, links }) => {
       <h3 className='h-beautify'>{header}</h3>
       <ul>
         {links.map(
-          ({ icon, label }): ReactElement => (
+          ({ icon, label, anchor }): ReactElement => (
             <li key={label.toString()} className='nav-item'>
-              <a>
+              <a className='nav-link' {...anchor}>
                 {createIcon(icon, { size: 'lg' })}
                 {label}
               </a>

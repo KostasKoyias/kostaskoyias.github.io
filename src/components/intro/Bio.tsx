@@ -14,7 +14,7 @@ const Bio: FC = () => {
         </a>
         {' in September 2020'}
         <br />
-        {'concentrated in Data & Knowledge Management as well as Software Engineering.'},
+        {'concentrated in Data & Knowledge Management as well as Software Engineering.'}
         <div id='specialization'>
           <br />
           {focus}
