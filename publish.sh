@@ -36,7 +36,7 @@ git commit -m "Publishing commit $main_commit" &> /dev/null
 
 # Push the build folder
 echo " > Pushing changes"
-git push origin "$(git subtree split --prefix $BUILD_FOLDER HEAD)":"$GH_PAGES_BRANCH" --force
+git push origin "$(git subtree split --prefix $BUILD_FOLDER HEAD)":"refs/heads/$GH_PAGES_BRANCH" --force
 
 git checkout "$MAIN_BRANCH"
 printf "\n > All done, please make sure branch '%s' is set as the source branch in your Pages settings on Github for this repo\n" "$GH_PAGES_BRANCH"
