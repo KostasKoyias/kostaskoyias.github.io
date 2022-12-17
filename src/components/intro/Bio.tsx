@@ -6,7 +6,7 @@ const Bio: FC = () => {
   return (
     <div className='card-text'>
       <div id='personal-info'>
-        {`My name is Konstantinos Koyias & I am ${getAge(birthday)} years old.`}
+        {`My name is Konstantinos Kogias & I am ${getAge(birthday)} years old.`}
         <br />
         {'Obtained a B.Sc in Informatics and Telecommunications at '}
         <a href='https://www.di.uoa.gr/eng' target='_blank' rel='noreferrer'>
