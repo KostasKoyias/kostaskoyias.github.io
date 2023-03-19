@@ -6,12 +6,13 @@ export interface Props {
   repo: Repo;
 }
 
+const MAX_CARD_TEXT_CHARACTERS = 200;
+
 const RepoCard: FC<Props> = ({ repo }) => {
   const { name, description, url, icon, avatarUrl } = repo;
   const attributes = [{ key: 'language', value: repo.language || 'None' }];
 
-  const maxDescription = 200,
-    croppedDescription = description.slice(0, maxDescription) + '...';
+  const croppedDescription = description.slice(0, MAX_CARD_TEXT_CHARACTERS) + '...';
 
   return (
     <div className='card'>
@@ -22,7 +23,7 @@ const RepoCard: FC<Props> = ({ repo }) => {
       </h5>
       <div className='card-body'>
         <div className='card-text'>
-          {description.length > maxDescription ? croppedDescription : description}
+          {description.length > MAX_CARD_TEXT_CHARACTERS ? croppedDescription : description}
           <ul className='card-attributes'>
             {attributes.map((attr) => (
               <li key={attr.key}>

@@ -1,4 +1,4 @@
-import { GITHUB_HEADERS, GITHUB_API_URL } from '../config';
+import { GITHUB_API_URL, GITHUB_HEADERS } from '../config';
 import { faBitbucket, faGithub, faLinux } from '@fortawesome/free-brands-svg-icons';
 import { Host, ProjectTopic } from './types';
 
@@ -16,9 +16,8 @@ const hosts: Host[] = [
     icon: faBitbucket,
   },
 ];
-const grid = { rows: 12, cardsPerRow: 4 };
 const alertMsg = '!! Failed to load projects. Please check your connection & reload this page.';
-const blacklist = ['api', 'ui'];
+const repoBlacklist = ['api', 'ui'];
 
 const topics: ProjectTopic[] = [
   { id: 'linux', icon: faLinux },
@@ -29,4 +28,4 @@ const topics: ProjectTopic[] = [
   { id: 'other' },
 ];
 
-export { hosts, topics, alertMsg, grid, blacklist };
+export { hosts, topics, alertMsg, repoBlacklist };

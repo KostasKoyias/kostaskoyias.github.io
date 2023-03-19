@@ -1,8 +1,8 @@
-import { blacklist } from '../config';
+import { repoBlacklist } from '../config';
 import { ProjectTopic, Repo } from '../types';
 
 export const groupReposByTopic = (repos: Repo[], topics: ProjectTopic[]): Map<string, Repo[]> => {
-  const importantRepos = repos.filter((r) => !blacklist.some((b) => r.name.endsWith(b)));
+  const importantRepos = repos.filter((r) => !repoBlacklist.some((b) => r.name.endsWith(b)));
 
   // classify repos, assigning each to the appropriate topic list
   return new Map(
