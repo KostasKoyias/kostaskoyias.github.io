@@ -25,10 +25,14 @@ hr {
   font-size: 2.5em;
 }
 
-#nav-list {
-  text-align: right;
-  display: inherit;
-  padding-right: 2.5rem;
+#top-navbar {
+  padding-right: 2.5em;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-item,

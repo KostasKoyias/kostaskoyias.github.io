@@ -15,7 +15,7 @@ const Nav: FC = () => {
       <a id='hub-link' href='/#'>
         {createIcon(faGithub)}
       </a>
-      <ul id='nav-list'>
+      <ul id='top-navbar' className='nav-list'>
         {items.map((item, i) => (
           <li key={i} className='nav-item'>
             <a className='nav-link' href={item.href}>
