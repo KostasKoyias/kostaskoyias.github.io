@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 const messages = [
   'Make sure to check out my GitHub account where all  my projects reside',
   'If basketball is your passion, do not forget to visit my youtube channel as well',
-  'For any work-related offers or issues, one can contact me via e-mail, phone or facebook',
+  'For any work-related offers or issues, one can contact me via e-mail',
 ];
 
 const MoreInfo: FC = () => (

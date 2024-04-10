@@ -2,17 +2,15 @@ import React from 'react';
 import { createIcon } from '../utils';
 import {
   faLinkedin,
-  faFacebook,
   faInstagram,
   faYoutubeSquare,
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faFileAlt, faPhoneSquare, faAt } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faFileAlt, faAt } from '@fortawesome/free-solid-svg-icons';
 import { LinkSection } from './types';
 
 const links = {
   mail: <span>konstantinos.kogias97{createIcon(faAt)}gmail.com</span>,
-  phone: '+30 6970307088',
   github: 'https://github.com/KostasKoyias',
   linkedIn: 'https://www.linkedin.com/in/kostas-koyias-687269175/',
   fb: 'https://www.facebook.com/kostaskoyias',
@@ -53,19 +51,9 @@ const personalLinks = {
   header: 'Personal',
   links: [
     {
-      icon: faFacebook,
-      label: 'facebook',
-      anchor: { href: links.fb, target: '_blank' },
-    },
-    {
       icon: faYoutubeSquare,
       label: 'youtube',
       anchor: { href: links.uTube, target: '_blank' },
-    },
-    {
-      icon: faPhoneSquare,
-      label: links.phone,
-      anchor: { href: '#footer', className: 'dead-anchor' },
     },
     {
       icon: faInstagram,
